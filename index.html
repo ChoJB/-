@@ -1,0 +1,1067 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LINE-STOP 지침서 | Yu Sung FT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Sans+Thai:wght@400;500;700&family=Noto+Sans+Bengali:wght@400;500;700&family=Noto+Sans+Myanmar:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#002C5F; --teal:#007FA8; --white:#fff; --sand:#F6F3F2; --sand-dark:#E4DCD3;
+  --footer:#1C1B1B; --text:#000; --text2:#666; --text3:#333; --text4:#444; --muted:#999;
+  --line:#CCC; --line-light:#E5E5E5; --scrim:rgba(0,0,0,.7);
+  --alert:#C00000; --brand:#F56C3D;
+  --font:'HyundaiSansText','HyundaiSansHeadKR','Noto Sans KR','Noto Sans Thai','Noto Sans Bengali','Noto Sans Myanmar','Noto Sans SC','Malgun Gothic','맑은 고딕',sans-serif;
+  --ease:.3s ease;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:130px}
+body{font-family:var(--font);color:var(--text);background:#fff;letter-spacing:-.4px;line-height:1.6;-webkit-font-smoothing:antialiased}
+button{font-family:inherit;letter-spacing:inherit;cursor:pointer;border:0;background:none;color:inherit}
+ul{list-style:none}
+:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:0;top:-70px;width:100%;height:62px;background:var(--navy);color:#fff;font-size:16px;z-index:100000}
+.skip:focus{top:0}
+
+/* ---------- header ---------- */
+.progress{position:fixed;top:0;left:0;height:5px;width:0;background:var(--teal);z-index:99998}
+header{position:fixed;top:0;left:0;right:0;height:auto;z-index:9000;background:transparent;transition:background var(--ease),backdrop-filter var(--ease)}
+header.fixed{background:rgba(255,255,255,.9);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);border-bottom:1px solid var(--line-light)}
+.hd{max-width:1400px;margin:0 auto;height:80px;padding:0 30px;display:flex;align-items:center;gap:48px}
+.hd .logo{display:block;height:30px}
+.hd .logo img{height:100%;display:block}
+nav.gnb{position:relative;display:flex;gap:6px;height:100%;align-items:center}
+nav.gnb a{white-space:nowrap;position:relative;height:30px;padding:0 14px;display:flex;align-items:center;font-size:16px;line-height:30px;color:#000;text-decoration:none}
+nav.gnb .bar{position:absolute;left:0;bottom:0;height:4px;width:0;background:var(--navy);transition:left .4s,width .4s,opacity .4s}
+.hd .meta{margin-left:auto;display:flex;gap:8px;align-items:center;font-size:14px;color:var(--text2)}
+.chip{display:inline-flex;align-items:center;height:30px;padding:0 14px;border-radius:15px;font-size:14px;font-weight:500;background:var(--sand);color:#000;white-space:nowrap}
+.chip.on{background:var(--teal);color:#fff}
+
+/* ---------- sub-page title ---------- */
+.visual{background:var(--sand-dark);height:470px;padding:130px 60px 0}
+.visual .box{background:rgba(246,243,242,.7);height:100%;max-width:1785px;margin:0 auto;padding-top:80px;text-align:center}
+.crumb{position:absolute;margin-top:-62px;left:50%;transform:translateX(-50%);font-size:13px;color:var(--text2);display:flex;gap:10px}
+.crumb b{color:#000;font-weight:500}
+.visual h1{font-size:58px;line-height:1.1;font-weight:700;letter-spacing:-.4px}
+.visual p{margin-top:22px;font-size:16px;color:var(--text2);line-height:30px}
+
+/* ---------- common sections ---------- */
+.sec{padding-top:140px}
+.sec.sand{background:var(--sand);padding-bottom:110px}
+.body{max-width:1180px;margin:0 auto;padding:0 30px}
+.wide{max-width:1240px}
+h2.title{font-size:44px;line-height:58px;font-weight:700;letter-spacing:-.4px;text-align:center}
+p.tail{margin-top:14px;text-align:center;font-size:16px;line-height:34px;color:var(--text2);letter-spacing:-.24px}
+.eyebrow{display:block;text-align:center;font-size:14px;font-weight:500;color:var(--navy);margin-bottom:6px;letter-spacing:.5px}
+
+/* meta grid */
+.docmeta{margin:-70px auto 0;position:relative;z-index:2;max-width:1120px;background:#fff;border:1px solid var(--sand-dark);display:grid;grid-template-columns:200px 1fr 2fr}
+.docmeta dl{padding:20px 24px;border-right:1px solid var(--line-light)}
+.docmeta dt{font-size:13px;color:var(--text2)}
+.docmeta dd{font-size:16px;font-weight:500;margin-top:2px;min-height:26px}
+.docmeta .wide2{grid-column:span 2}
+.sign{display:grid;grid-template-columns:repeat(3,1fr);border:0}
+.sign div{border-right:1px solid var(--line-light);display:flex;flex-direction:column}
+.sign div:last-child{border-right:0}
+.sign span{background:var(--sand);text-align:center;font-size:13px;font-weight:500;padding:6px 0;border-bottom:1px solid var(--line-light)}
+.sign i{flex:1;min-height:62px}
+.docmeta .signwrap{grid-row:span 2;border-right:0;padding:0;display:flex;flex-direction:column}
+.docmeta .signwrap .sign{flex:1}
+.docmeta>.r2{border-top:1px solid var(--line-light)}
+
+/* purpose cards */
+.cards3{margin-top:60px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:#fff;padding:34px 32px 36px;min-height:210px;transition:background var(--ease);border:1px solid var(--line-light)}
+.card:hover{background:var(--sand)}
+.card .no{font-size:37px;line-height:40px;font-weight:700;letter-spacing:-.24px}
+.card h3{margin-top:18px;font-size:24px;line-height:34px;font-weight:700;letter-spacing:-.24px}
+.card p{margin-top:12px;font-size:16px;line-height:28px;color:var(--text2);letter-spacing:-.24px}
+.fatal{margin-top:20px;background:#fff;border:1px solid var(--sand-dark);border-radius:20px 20px 0 0;display:grid;grid-template-columns:260px 1fr;overflow:hidden}
+.fatal .lbl{padding:36px 32px;border-right:1px solid var(--sand-dark)}
+.fatal .lbl small{display:block;font-size:14px;font-weight:500;color:var(--navy)}
+.fatal .lbl h3{font-size:30px;line-height:44px;font-weight:700;letter-spacing:-.4px}
+.fatal .txt{padding:36px 40px;font-size:16px;line-height:30px;color:var(--text3)}
+.fatal .tags{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap}
+
+/* ---------- flow ---------- */
+.ctrl{margin:46px 0 22px;display:flex;flex-wrap:wrap;gap:10px 28px;align-items:center;justify-content:space-between}
+.grp{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.grp .gl{font-size:14px;color:var(--text2);margin-right:4px}
+.tab{height:36px;padding:0 16px;font-size:14px;border:1px solid var(--text2);background:#fff;color:var(--text2);transition:var(--ease)}
+.tab:hover{border-color:#000;color:#000}
+.tab[aria-pressed=true],.tab[aria-selected=true]{background:var(--teal);border-color:var(--teal);color:#fff}
+.btn{height:40px;padding:0 20px;background:var(--navy);color:#fff;font-size:16px;display:inline-flex;align-items:center;gap:8px;transition:var(--ease)}
+.btn:hover{background:#00204a}
+.btn.ghost{background:#fff;color:var(--navy);border:1px solid var(--navy)}
+.btn.ghost:hover{background:var(--sand)}
+.stage{background:#fff;border:1px solid var(--line-light);overflow-x:auto}
+.stage .inner{min-width:820px;padding:14px 18px 6px}
+svg#flow{display:block;width:100%;height:auto}
+svg text{font-family:var(--font);letter-spacing:-.3px}
+.node rect.bx{fill:#fff;stroke:#262626;stroke-width:1;transition:fill .35s ease,stroke .35s ease,stroke-width .25s ease}
+.node text{transition:opacity .3s}
+.node.t-review rect.bx{fill:var(--sand);stroke:var(--navy);stroke-width:1.5}
+.node.t-alert rect.bx{fill:var(--sand-dark);stroke:#262626}
+.node.t-stop rect.bx{fill:var(--alert);stroke:var(--alert)}
+.node.t-end rect.bx{fill:var(--footer);stroke:var(--footer)}
+.node.t-report rect.bx{fill:#fff;stroke:var(--navy);stroke-width:1.2}
+.node text.lb{font-size:14px;font-weight:700;fill:#000;pointer-events:none}
+.node text.sb{font-size:10.5px;fill:var(--text2);pointer-events:none}
+.node.t-stop text.lb,.node.t-end text.lb{fill:#fff}
+.node{cursor:pointer;outline:none}
+.node .ring{fill:none;stroke:var(--teal);stroke-width:1.5;opacity:0;pointer-events:none}
+.node.visited rect.bx{fill:#D3EAF2;stroke:var(--teal);stroke-width:1.2}
+.node.covered rect.bx{fill:#F1F7F9;stroke:#9CCBDB;stroke-width:1.2}
+.node.t-stop.covered rect.bx{fill:#D98080;stroke:#D98080}.node.t-end.covered rect.bx{fill:#555;stroke:#555}
+.node.t-stop.visited rect.bx{fill:var(--alert);stroke:var(--alert)}
+.node.t-end.visited rect.bx{fill:var(--footer);stroke:var(--teal);stroke-width:2}
+.node.active rect.bx{stroke:var(--teal);stroke-width:3}
+.node.active:not(.t-stop):not(.t-end) rect.bx{fill:#fff}
+.node.active .ring{opacity:.7;animation:ring 1.6s ease-out infinite}
+@keyframes ring{0%{stroke-opacity:.9;transform:scale(1)}100%{stroke-opacity:0;transform:scale(1.16)}}
+.node .ring{transform-box:fill-box;transform-origin:center}
+.node:focus-visible rect.bx{stroke:var(--teal);stroke-width:3}
+.note{font-size:11px;fill:var(--text2)}
+.note.red{fill:var(--alert);font-weight:700;font-size:12px}
+.cap{font-size:11px;fill:var(--text2)}
+path.base{fill:none;stroke:var(--line);stroke-width:2}
+path.idle{fill:none;stroke:#999;stroke-width:2;stroke-linecap:round;stroke-dasharray:1 11;animation:march 1.1s linear infinite}
+path.idle.dash2{stroke:#bbb}
+@keyframes march{to{stroke-dashoffset:-12}}
+path.trace{fill:none;stroke:var(--teal);stroke-width:2.6;stroke-linecap:round}
+path.trace.cov{stroke:#9CCBDB;stroke-width:2.2}
+path.trace.static{stroke-width:2.5}
+.elabel rect{fill:#fff;stroke:var(--line-light)}
+.elabel text{font-size:10.5px;font-weight:500;fill:var(--text2)}
+.elabel.on rect{fill:var(--teal);stroke:var(--teal)}
+.elabel.cov rect{fill:#E3F0F5;stroke:#9CCBDB}.elabel.cov text{fill:#3D7A91}
+.elabel.on text{fill:#fff}
+#token{fill:var(--teal);opacity:0;transition:opacity .15s}
+#token.show{opacity:.85}
+.stepbar{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;background:var(--sand);padding:22px 28px;margin-top:0;border:1px solid var(--line-light);border-top:0}
+.stepno{min-width:64px;height:64px;background:var(--teal);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:22px;font-weight:700;line-height:1}
+.stepno small{font-size:11px;font-weight:400;margin-top:4px;opacity:.9}
+.stepbar h4{font-size:20px;line-height:28px;font-weight:700}
+.stepbar p{font-size:15px;line-height:24px;color:var(--text2);letter-spacing:-.24px;margin-top:2px}
+.dots{display:flex;gap:7px;flex-wrap:wrap;max-width:260px;justify-content:flex-end}
+.dots button{width:12px;height:12px;border-radius:60%;background:rgba(0,0,0,.1);padding:0;transition:var(--ease)}
+.dots button.done{background:rgba(0,127,168,.45)}
+.dots button.cur{background:var(--teal);transform:scale(1.25)}
+.legend{margin-top:16px;display:flex;flex-wrap:wrap;gap:6px 22px;font-size:13px;color:var(--text2);justify-content:center}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend i{width:14px;height:14px;display:inline-block;border:1px solid #262626;background:#fff}
+
+/* ---------- ops standards ---------- */
+.tabs{margin-top:56px;display:grid;grid-template-columns:4.4fr 1.6fr;gap:20px}
+.tgroup{background:#fff;border:1px solid var(--line-light);padding:16px 18px 18px}
+.tgroup>small{display:block;font-size:13px;font-weight:500;color:var(--text2);margin-bottom:10px}
+.tgroup>small b{color:#000}
+.tgroup .row{display:grid;gap:10px}
+.g5 .row{grid-template-columns:repeat(5,1fr)}
+.g1 .row{grid-template-columns:1fr}.g1 .ops .k{font-size:20px}
+.ops{height:auto;min-height:84px;padding:12px 10px;text-align:left;border:1px solid var(--text2);background:#fff;color:var(--text2);transition:var(--ease);display:flex;flex-direction:column;gap:4px;position:relative}
+.ops:hover{border-color:#000;color:#000}
+.ops .k{padding-top:6px;font-size:22px;line-height:28px;font-weight:700;letter-spacing:-.24px}
+.ops .e{font-size:12px;font-weight:400;opacity:.85}
+.ops .n{position:absolute;top:10px;right:10px;font-size:11px;font-weight:500;height:19px;min-width:30px;padding:0 6px;display:flex;align-items:center;justify-content:center;background:var(--sand);color:#000}
+.ops[aria-selected=true]{background:var(--teal);border-color:var(--teal);color:#fff}
+.ops[aria-selected=true] .n{background:rgba(255,255,255,.2);color:#fff}
+.panelwrap{margin-top:20px;background:#fff;border:1px solid var(--line-light);overflow:hidden;position:relative}
+.phead{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding:34px 40px 26px;border-bottom:1px solid var(--line-light);flex-wrap:wrap}
+.phead small{font-size:14px;font-weight:500;color:var(--navy);display:block}
+.phead h3{font-size:30px;line-height:44px;font-weight:700;letter-spacing:-.4px}
+.phead p{font-size:15px;color:var(--text2);margin-top:2px;letter-spacing:-.24px}
+.pager{display:flex;align-items:center;gap:10px}
+.pager .arr{width:44px;height:44px;background:rgba(31,45,61,.4);color:#fff;font-size:20px;line-height:1;display:flex;align-items:center;justify-content:center;transition:var(--ease)}
+.pager .arr:hover{background:var(--navy)}
+.pager .pg{font-size:14px;color:var(--text2);min-width:56px;text-align:center}
+.pbody{display:grid;grid-template-columns:1fr 340px}
+.pane{animation:inR .35s ease both}
+.pane.back{animation-name:inL}
+@keyframes inR{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
+@keyframes inL{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:none}}
+.items{padding:6px 40px 30px}
+.items .th{display:grid;grid-template-columns:56px 1fr 96px;font-size:13px;color:var(--text2);padding:14px 0 10px;border-bottom:1px solid var(--line)}
+.items li{display:grid;grid-template-columns:56px 1fr 96px;gap:0;align-items:center;padding:16px 0;border-bottom:1px solid var(--line-light);transition:background var(--ease)}
+.items li:hover{background:var(--sand)}
+.items .no{font-size:20px;font-weight:700}
+.items .tx{font-size:16px;line-height:26px;padding-right:20px}
+.items .tx em{font-style:normal;font-weight:700;background:linear-gradient(transparent 62%,rgba(0,127,168,.18) 0)}
+.stop{display:inline-flex;align-items:center;justify-content:center;height:30px;padding:0 14px;border-radius:15px;font-size:14px;font-weight:500;white-space:nowrap;justify-self:end}
+.s-lead{background:var(--sand-dark);color:#000}
+.s-team{background:#666;color:#fff}
+.s-plant{background:var(--navy);color:#fff}
+.s-qa{background:#000;color:#fff}
+#pstd{background:var(--sand);border-left:1px solid var(--line-light)}
+.std{padding:30px 30px 34px}
+.std small{font-size:13px;color:var(--text2);display:block}
+.std h4{font-size:18px;font-weight:700;margin:2px 0 14px}
+.std dl+dl{margin-top:20px}
+.std dt{font-size:15px;font-weight:700;color:var(--navy);padding-bottom:8px;border-bottom:1px solid var(--sand-dark)}
+.std dd{font-size:15px;line-height:24px;color:var(--text4);padding:8px 0 0;letter-spacing:-.24px}
+.esc{margin-top:26px;background:#fff;padding:18px 20px;border:1px solid var(--sand-dark)}
+.esc small{margin-bottom:10px}
+.esc .chain{display:flex;align-items:center;flex-wrap:wrap;gap:6px}
+.esc .chain i{font-style:normal;color:var(--muted);font-size:14px}
+.esc .chain .stop{height:26px;font-size:13px;padding:0 12px;opacity:.35;transition:opacity .3s}
+.esc .chain .stop.use{opacity:1}
+
+/* ---------- slogan & footer ---------- */
+.slogan{margin-top:140px;background:#000;color:#fff;text-align:center;padding:34px 20px;font-size:34px;line-height:48px;font-weight:700;letter-spacing:-.4px}
+.slogan em{font-style:normal;font-size:40px}
+.slogan .a{color:#FF8A5E}.slogan .b{color:#7FD0F0}.slogan .ar{color:var(--muted);margin:0 8px;font-weight:400}
+footer{background:var(--footer);padding:60px 50px;color:var(--muted);font-size:14px}
+footer .in{max-width:1120px;margin:0 auto;display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+footer img{height:28px;filter:brightness(0) invert(1);opacity:.9;display:block;margin-bottom:22px}
+footer ul{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:12px}
+footer strong{color:#fff}
+footer p{font-size:12px;line-height:1.8}
+.totop{align-self:flex-end;border:1px solid #676767;color:var(--muted);height:30px;padding:0 13px;font-size:12px}
+.totop:hover{color:#fff;border-color:#fff}
+
+
+.ctotal{font-size:15px;color:var(--text2)}.ctotal b{font-size:22px;color:#000;font-weight:700}.ctotal span{font-size:13px;margin-left:10px}
+.scase{font-size:13px;font-weight:500;color:var(--teal);margin-bottom:2px}
+.cases{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border:1px solid var(--line-light)}
+.case{padding:14px 16px 16px;border-right:1px solid var(--line-light);border-top:1px solid var(--line-light);font-size:13px;line-height:20px;color:var(--text2);position:relative;transition:background .35s ease,color .35s ease}
+.case:nth-child(4n){border-right:0}.case:nth-child(-n+4){border-top:0}
+.case b{display:block;font-size:12px;color:var(--muted);font-weight:500;transition:color .35s}
+.case .tags{margin-top:6px;display:flex;gap:4px;flex-wrap:wrap}
+.case .tags i{font-style:normal;font-size:11px;height:20px;padding:0 8px;border-radius:10px;background:var(--sand);color:#000;display:inline-flex;align-items:center}
+.case.done{color:#000}.case.done b{color:var(--teal)}.case.done b::after{content:' ✓'}
+.case.cur{background:#F2F8FA;color:#000}.case.cur b{color:var(--teal)}
+.case.cur::before{content:'';position:absolute;left:0;right:0;top:0;height:3px;background:var(--teal);transform-origin:left;transform:scaleX(var(--p,0));transition:transform .3s ease}
+@media (max-width:767px){.cases{grid-template-columns:repeat(2,1fr)}.case:nth-child(4n){border-right:1px solid var(--line-light)}.case:nth-child(2n){border-right:0}.case:nth-child(-n+4){border-top:1px solid var(--line-light)}.case:nth-child(-n+2){border-top:0}}
+
+
+section[hidden]{display:none!important}
+nav.gnb a{background:none;border:0;cursor:pointer;font-family:inherit}
+nav.gnb a[aria-current=page]{font-weight:700}
+.node.app rect.bx{stroke:var(--teal);stroke-width:1.8}
+.node.na{opacity:.4}
+.node.na rect.bx{fill:#EFEFEF!important;stroke:#AAA!important;stroke-width:1!important;stroke-dasharray:4 3}
+.node.na text{fill:#8A8A8A!important}
+.node.na .ring{display:none}
+.elabel.na{opacity:.3}
+.case{cursor:pointer}.case:hover{background:#F7FAFB}.case:focus-visible{outline:2px solid var(--teal);outline-offset:-2px}
+.vbtn{display:none}
+.marks{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--text2);padding:12px 4px 0}
+@media (max-width:767px){
+  .vbtn{display:inline-flex}
+  .stage .inner{padding:8px 6px 4px}
+  .stage.full .inner{min-width:760px}
+  .stage:not(.full) .inner{min-width:0}
+  .ctrl{margin:28px 0 14px}
+  .ctrl .grp{width:100%}.ctrl .btn{height:44px;padding:0 14px;font-size:15px;flex:1 1 auto;justify-content:center}
+  .ctotal span{display:block;margin:4px 0 0}
+  .stepbar{padding:16px}
+  .stepno{min-width:52px}
+  .case{padding:12px 12px 14px}
+  .body,.wide{padding-left:16px;padding-right:16px}
+  h2.title{font-size:26px;line-height:36px}
+  p.tail{font-size:14px;line-height:26px}
+}
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:1024px){
+  .docmeta{grid-template-columns:repeat(2,1fr)}
+  .docmeta .wide2{grid-column:span 2}
+  .docmeta .signwrap{grid-row:auto;grid-column:span 2;border-top:1px solid var(--line-light)}
+  .tabs{grid-template-columns:1fr}
+  .pbody{grid-template-columns:1fr}
+  #pstd{border-left:0;border-top:1px solid var(--line-light)}
+  .cards3{grid-template-columns:1fr}
+  .fatal{grid-template-columns:1fr}
+  .fatal .lbl{border-right:0;border-bottom:1px solid var(--sand-dark);padding:26px 28px}
+}
+@media (max-width:767px){
+  .hd{gap:16px;padding:0 16px}
+  nav.gnb a{padding:0 8px;font-size:14px}.hd .meta{display:none}
+  .visual{height:360px;padding:80px 16px 0}.visual h1{font-size:34px}.visual .box{padding-top:70px}
+  .sec{padding-top:90px}h2.title{font-size:30px;line-height:40px}
+  .g5 .row{grid-template-columns:repeat(2,1fr)}
+  .stepbar{grid-template-columns:auto 1fr}.dots{grid-column:span 2;justify-content:flex-start}
+  .phead,.items{padding-left:20px;padding-right:20px}
+  .items .th,.items li{grid-template-columns:36px 1fr 78px}
+  .slogan{font-size:20px;line-height:32px}.slogan em{font-size:24px}
+  .docmeta{margin-top:-50px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}
+}
+
+/* ---- v4 ---- */
+.hd .meta{margin-left:auto}
+.langbar{max-width:1400px;margin:0 auto;padding:6px 30px 8px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.langbar::-webkit-scrollbar{display:none}
+.lgb{flex:none;height:30px;padding:0 14px;border:1px solid var(--line);background:#fff;color:var(--text2);font-size:13px;white-space:nowrap;transition:var(--ease)}
+.lgb:hover{border-color:#000;color:#000}
+.lgb[aria-pressed=true]{background:var(--navy);border-color:var(--navy);color:#fff;font-weight:700}
+.flowtop .cases{margin-top:0}
+.legend{margin:14px 0 16px;justify-content:flex-start}
+.stepbar{border-top:0}
+.ops .k{white-space:normal;word-break:keep-all}
+@media (max-width:767px){
+  .hd{height:auto;flex-wrap:wrap;padding:10px 16px 0;gap:0 12px}
+  .hd .logo{height:24px}
+  .hd .meta{display:flex}.hd .meta span:not(.chip){display:none}
+  nav.gnb{order:3;width:100%;height:40px;overflow-x:auto;scrollbar-width:none;gap:2px}
+  nav.gnb::-webkit-scrollbar{display:none}
+  .langbar{padding:6px 16px 8px}
+  .visual{height:430px;padding:128px 16px 0}
+  .legend{justify-content:flex-start}
+}
+</style>
+</head>
+<body>
+<button class="skip" onclick="document.getElementById('main').focus()">본문 바로가기</button>
+<div class="progress" id="progress"></div>
+
+<header id="hd">
+  <div class="hd">
+    <a class="logo" href="#top" aria-label="Yu Sung FT"><img src="data:image/png;base64,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" alt="Yu Sung FT"></a>
+    <nav class="gnb" id="gnb" aria-label="목차">
+      <a role="button" tabindex="0" href="#overview" data-sec="overview">개요</a>
+      <a role="button" tabindex="0" href="#flow-sec" data-sec="flow-sec">처리 Flow</a>
+      <a role="button" tabindex="0" href="#ops-sec" data-sec="ops-sec">운영 기준</a>
+      <span class="bar" id="gbar"></span>
+    </nav>
+    <div class="meta"><span class="chip">Rev 0</span></div>
+  </div>
+  <div class="langbar" role="group" aria-label="Language">
+    <button class="lgb" type="button" data-lang="ko" aria-pressed="true">한국어</button>
+    <button class="lgb" type="button" data-lang="vi" aria-pressed="false" lang="vi">Tiếng Việt</button>
+    <button class="lgb" type="button" data-lang="th" aria-pressed="false" lang="th">ภาษาไทย</button>
+    <button class="lgb" type="button" data-lang="bn" aria-pressed="false" lang="bn">বাংলা</button>
+    <button class="lgb" type="button" data-lang="zh" aria-pressed="false" lang="zh">中文</button>
+    <button class="lgb" type="button" data-lang="my" aria-pressed="false" lang="my">မြန်မာ</button>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+<!-- ===== title ===== -->
+<section class="visual" id="top">
+  <div class="box">
+    <div class="crumb"><span>품질</span><span>›</span><span>지침서</span><span>›</span><b>LINE-STOP</b></div>
+    <h1>LINE-STOP 지침서</h1>
+    <p>전 제품 생산 및 검사 공정 중 이상 발생 시 적용</p>
+  </div>
+</section>
+
+<div class="body" style="max-width:1180px">
+  <div class="docmeta" id="overview-meta">
+    <dl><dt>Rev No.</dt><dd>0</dd></dl>
+    <dl><dt>작성부서</dt><dd>생산관리팀</dd></dl>
+    <dl class="wide2"><dt>적용범위</dt><dd>전 제품 생산 및 검사 공정 중 이상 발생 시 적용</dd></dl>
+  </div>
+</div>
+
+<!-- ===== overview ===== -->
+<section class="sec" id="overview">
+  <div class="body">
+    <span class="eyebrow">LINE STOP SYSTEM</span>
+    <h2 class="title">Line Stop System 추진 목적</h2>
+    <p class="tail">사후 처리에서 사전 대응으로, 생산량에서 품질로.</p>
+    <div class="cards3">
+      <article class="card rv"><div class="no">01</div><h3>사전 대응 체제</h3><p>사후 처리 중심에서 사전 대응하는 품질 개선 체제 구축.</p></article>
+      <article class="card rv"><div class="no">02</div><h3>품질 제일주의</h3><p>생산량 위주의 생산방식에서 품질 제일주의의 생산 방식으로 전환.</p></article>
+      <article class="card rv"><div class="no">03</div><h3>낭비의 가시화</h3><p>현장의 제반 낭비를 눈으로 볼 수 있게 대기의 낭비로 바꾸어 줌.</p></article>
+    </div>
+    <div class="fatal rv">
+      <div class="lbl"><small>DEFINITION</small><h3>치명 불량이란?</h3></div>
+      <div class="txt">안전과 관련된 불량으로, 전기적 쇼크(단락, 지락, 감전, 누전 등)의 사고로 사람 및 제품에 중대한 영향을 미치는 불량
+        <div class="tags"><span class="chip">단락</span><span class="chip">지락</span><span class="chip">감전</span><span class="chip">누전</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== flow ===== -->
+<section class="sec sand" id="flow-sec">
+  <div class="body wide">
+    <span class="eyebrow">PROCESS FLOW</span>
+    <h2 class="title">공정 이상 발생 처리 Flow</h2>
+    <p class="tail">8가지 경우(시료성/Lot성 × Line Stop 여부 × 공장장 승인/반려)를 선택해 재생할 수 있으며, 해당하지 않는 단계는 흐리게 표시됩니다.</p>
+
+    <div class="ctrl">
+      <div class="grp">
+        <button class="btn" id="bPlay" type="button"><span id="bPlayIc">▶</span><span id="bPlayTx">재생</span></button>
+        <button class="btn ghost" id="bPrev" type="button">‹ 이전 단계</button>
+        <button class="btn ghost" id="bNext" type="button">다음 단계 ›</button>
+        <button class="btn ghost" id="bNextCase" type="button">다음 경우 ›</button>
+        <button class="btn ghost" id="bReset" type="button">↺ 처음으로</button>
+        <button class="btn ghost vbtn" id="bView" type="button">전체 보기</button>
+      </div>
+      <p class="ctotal"><b id="cNow">—</b> / 8 경우의 수 <span>아래 경우를 누르면 해당 경우가 재생되며, 끝나면 전체 Flow가 한눈에 표시됩니다.</span></p>
+    </div>
+
+    <div class="flowtop">
+      <ol class="cases" id="cases" aria-label="경우의 수 진행 현황"></ol>
+      <div class="legend">
+        <span><i></i>일반 단계</span>
+        <span><i style="background:#F6F3F2;border-color:#002C5F"></i>검토 · 승인</span>
+        <span><i style="background:#C00000;border-color:#C00000"></i>Line Stop</span>
+        <span><i style="background:#D3EAF2;border-color:#007FA8"></i>진행 완료</span>
+        <span><i style="border:2px solid #007FA8"></i>해당 단계(진행 예정)</span>
+        <span><i style="background:#EFEFEF;border:1px dashed #AAA"></i>해당 없음(흐리게)</span>
+        <span><i style="border:3px solid #007FA8"></i>현재 단계</span>
+        <span>왼쪽 열 : 상위 보고 체계</span>
+      </div>
+    </div>
+
+    <div class="stage" id="stage"><div class="inner"><svg id="flow" viewBox="0 0 1080 800" role="img" aria-label="Flow"></svg></div></div>
+    <div class="stepbar" aria-live="polite">
+      <div class="stepno" id="stepNo">—<small>STEP</small></div>
+      <div><div class="scase" id="stepCase">모든 경우의 수를 차례로 보여 드립니다</div><h4 id="stepTitle">시작 전</h4><p id="stepDesc">재생 버튼을 누르거나, 다이어그램의 단계를 직접 눌러 보세요.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ops ===== -->
+<section class="sec" id="ops-sec">
+  <div class="body wide">
+    <span class="eyebrow">OPERATION STANDARD</span>
+    <h2 class="title">Line Stop 운영 기준</h2>
+    <p class="tail">구분을 선택하면 해당 항목의 이상 발생 기준 · Stop 주체 · 관련 규격 페이지로 전환됩니다.</p>
+
+    <div class="tabs" role="tablist" aria-label="Line Stop 운영 기준 구분">
+      <div class="tgroup g5"><small><b>4M 1E</b> 관리항목(원인) 이상</small><div class="row" id="rowA"></div></div>
+      <div class="tgroup g1"><small><b>품질(결과)특성</b> 이상</small><div class="row" id="rowB"></div></div>
+    </div>
+
+    <div class="panelwrap">
+      <div id="phead"></div>
+      <div class="pbody"><div id="pitems"></div><aside id="pstd"></aside></div>
+    </div>
+  </div>
+  <div class="slogan rv" id="slogan"><span class="a"><em>작업자</em></span>는 Line을 멈춰라, <span class="b"><em>관리자</em></span>는 Line을 멈추지 마라.<span class="ar">→</span>하지만 <span class="b"><em>관리자</em></span>는 절대 Line을 멈추게 하지 마라.</div>
+</section>
+</main>
+
+<footer>
+  <div class="in">
+    <div>
+      <img src="data:image/png;base64,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" alt="Yu Sung FT">
+      <ul><li><strong>LINE-STOP 지침서</strong></li><li>Rev 0</li><li><span>작성부서</span> <span>생산관리팀</span></li></ul>
+      <p><span>적용범위</span> <span>전 제품 생산 및 검사 공정 중 이상 발생 시 적용</span><br>© Yu Sung FT. All rights reserved.</p>
+    </div>
+    <a class="totop" href="#top" style="display:inline-flex;align-items:center;text-decoration:none">TOP ↑</a>
+  </div>
+</footer>
+
+<script>
+/* i18n dictionary: K(korean, vi, th, bn, zh, my) */
+const TR={}; const K=(k,...a)=>{TR[k]=a};
+/* ---- static page ---- */
+K('품질','Chất lượng','คุณภาพ','মান','品质','အရည်အသွေး');
+K('지침서','Hướng dẫn','คู่มือ','নির্দেশিকা','指南','လမ်းညွှန်');
+K('LINE-STOP 지침서','Hướng dẫn LINE-STOP','คู่มือ LINE-STOP','LINE-STOP নির্দেশিকা','LINE-STOP 指南','LINE-STOP လမ်းညွှန်');
+K('전 제품 생산 및 검사 공정 중 이상 발생 시 적용','Áp dụng khi xảy ra bất thường trong quá trình sản xuất và kiểm tra tất cả sản phẩm','ใช้เมื่อเกิดความผิดปกติในกระบวนการผลิตและตรวจสอบผลิตภัณฑ์ทุกชนิด','সকল পণ্যের উৎপাদন ও পরিদর্শন প্রক্রিয়ায় অস্বাভাবিকতা ঘটলে প্রযোজ্য','适用于所有产品生产及检验过程中发生异常时','ထုတ်ကုန်အားလုံး၏ ထုတ်လုပ်မှုနှင့် စစ်ဆေးမှုလုပ်ငန်းစဉ်အတွင်း ချို့ယွင်းချက်ဖြစ်ပေါ်လျှင် အသုံးပြုသည်');
+K('작성부서','Bộ phận lập','แผนกผู้จัดทำ','প্রস্তুতকারী বিভাগ','编制部门','ပြုစုသည့်ဌာန');
+K('생산관리팀','Nhóm Quản lý sản xuất','ทีมควบคุมการผลิต','উৎপাদন ব্যবস্থাপনা দল','生产管理组','ထုတ်လုပ်မှုစီမံခန့်ခွဲရေးအဖွဲ့');
+K('적용범위','Phạm vi áp dụng','ขอบเขตการใช้งาน','প্রযোজ্যতার পরিধি','适用范围','အသုံးပြုနိုင်သည့်နယ်ပယ်');
+K('개요','Tổng quan','ภาพรวม','সংক্ষিপ্ত বিবরণ','概述','အကျဉ်းချုပ်');
+K('처리 Flow','Quy trình xử lý','ขั้นตอนการดำเนินการ','প্রক্রিয়া ফ্লো','处理流程','ကိုင်တွယ်မှုလုပ်ငန်းစဉ်');
+K('운영 기준','Tiêu chuẩn vận hành','เกณฑ์การปฏิบัติงาน','পরিচালনা মানদণ্ড','运行标准','လည်ပတ်မှုစံနှုန်း');
+K('Line Stop System 추진 목적','Mục đích triển khai hệ thống Line Stop','วัตถุประสงค์ของระบบ Line Stop','Line Stop সিস্টেম বাস্তবায়নের উদ্দেশ্য','推行 Line Stop 系统的目的','Line Stop စနစ် အကောင်အထည်ဖော်ရခြင်း ရည်ရွယ်ချက်');
+K('사후 처리에서 사전 대응으로, 생산량에서 품질로.','Từ xử lý sau sự cố sang ứng phó phòng ngừa, từ sản lượng sang chất lượng.','จากการแก้ไขภายหลัง สู่การรับมือล่วงหน้า จากปริมาณการผลิต สู่คุณภาพ','ঘটনার পরে সমাধান থেকে আগে থেকে প্রতিরোধে, উৎপাদনের পরিমাণ থেকে মানে।','从事后处理转向事前应对，从产量转向品质。','ဖြစ်ပြီးမှ ကိုင်တွယ်ခြင်းမှ ကြိုတင်ကာကွယ်ခြင်းသို့၊ ထုတ်လုပ်မှုပမာဏမှ အရည်အသွေးသို့။');
+K('사전 대응 체제','Hệ thống ứng phó phòng ngừa','ระบบรับมือล่วงหน้า','আগাম প্রতিক্রিয়া ব্যবস্থা','事前应对体系','ကြိုတင်ကာကွယ်ရေးစနစ်');
+K('사후 처리 중심에서 사전 대응하는 품질 개선 체제 구축.','Xây dựng hệ thống cải tiến chất lượng ứng phó phòng ngừa thay vì chỉ xử lý sau sự cố.','สร้างระบบปรับปรุงคุณภาพที่รับมือล่วงหน้า แทนการเน้นแก้ไขภายหลัง','ঘটনার পরে সমাধানকেন্দ্রিক পদ্ধতি থেকে আগাম প্রতিক্রিয়ামূলক মান উন্নয়ন ব্যবস্থা গড়ে তোলা।','从以事后处理为主，转变为构建事前应对的品质改善体系。','ဖြစ်ပြီးမှ ကိုင်တွယ်ခြင်းအပေါ် အခြေခံမှ ကြိုတင်ကာကွယ်သော အရည်အသွေးတိုးတက်ရေးစနစ် ထူထောင်ခြင်း။');
+K('품질 제일주의','Chất lượng là trên hết','คุณภาพต้องมาก่อน','মানই সর্বাগ্রে','品质第一','အရည်အသွေးကို ဦးစားပေးခြင်း');
+K('생산량 위주의 생산방식에서 품질 제일주의의 생산 방식으로 전환.','Chuyển từ phương thức sản xuất coi trọng sản lượng sang phương thức sản xuất đặt chất lượng lên hàng đầu.','เปลี่ยนจากการผลิตที่เน้นปริมาณ เป็นการผลิตที่ยึดคุณภาพเป็นอันดับหนึ่ง','উৎপাদনের পরিমাণকেন্দ্রিক পদ্ধতি থেকে মানকে সর্বোচ্চ গুরুত্ব দেওয়া উৎপাদন পদ্ধতিতে রূপান্তর।','从以产量为主的生产方式，转变为品质第一的生产方式。','ထုတ်လုပ်မှုပမာဏကို အဓိကထားသော ထုတ်လုပ်ပုံမှ အရည်အသွေးကို ပထမထားသော ထုတ်လုပ်ပုံသို့ ပြောင်းလဲခြင်း။');
+K('낭비의 가시화','Làm lộ rõ lãng phí','ทำให้ความสูญเปล่าเห็นได้ชัด','অপচয় দৃশ্যমান করা','浪费可视化','အလေအလွင့်ကို မြင်သာအောင်ပြုလုပ်ခြင်း');
+K('현장의 제반 낭비를 눈으로 볼 수 있게 대기의 낭비로 바꾸어 줌.','Biến mọi lãng phí tại hiện trường thành lãng phí chờ đợi để có thể nhìn thấy bằng mắt.','ทำให้ความสูญเปล่าทั้งหมดในหน้างานมองเห็นได้ด้วยตา โดยเปลี่ยนเป็นความสูญเปล่าจากการรอ','কর্মক্ষেত্রের সব অপচয় চোখে দেখা যায় এমনভাবে অপেক্ষার অপচয়ে রূপান্তর করা।','将现场的各种浪费转化为等待的浪费，使其肉眼可见。','လုပ်ငန်းခွင်ရှိ အလေအလွင့်အားလုံးကို မျက်စိဖြင့်မြင်နိုင်စေရန် စောင့်ဆိုင်းမှုဆုံးရှုံးမှုအဖြစ် ပြောင်းလဲပေးခြင်း။');
+K('치명 불량이란?','Lỗi nghiêm trọng là gì?','ข้อบกพร่องร้ายแรงคืออะไร?','মারাত্মক ত্রুটি কী?','什么是致命不良？','အသက်အန္တရာယ်ရှိသော ချို့ယွင်းချက်ဆိုသည်မှာ?');
+K('안전과 관련된 불량으로, 전기적 쇼크(단락, 지락, 감전, 누전 등)의 사고로 사람 및 제품에 중대한 영향을 미치는 불량','Lỗi liên quan đến an toàn, gây ảnh hưởng nghiêm trọng đến con người và sản phẩm do tai nạn sốc điện (đoản mạch, chạm đất, điện giật, rò điện, v.v.)','ข้อบกพร่องที่เกี่ยวข้องกับความปลอดภัย ซึ่งส่งผลร้ายแรงต่อคนและผลิตภัณฑ์จากอุบัติเหตุไฟฟ้าช็อต (ไฟฟ้าลัดวงจร ไฟรั่วลงดิน ไฟดูด ไฟรั่ว ฯลฯ)','নিরাপত্তা-সংক্রান্ত ত্রুটি, যা বৈদ্যুতিক শকের দুর্ঘটনা (শর্ট সার্কিট, আর্থ ফল্ট, বিদ্যুৎস্পৃষ্ট হওয়া, বিদ্যুৎ লিকেজ ইত্যাদি) ঘটিয়ে মানুষ ও পণ্যের উপর গুরুতর প্রভাব ফেলে','与安全相关的不良，因触电事故（短路、接地故障、触电、漏电等）而对人员和产品造成重大影响的不良','ဘေးကင်းလုံခြုံရေးနှင့် ဆိုင်သော ချို့ယွင်းချက်ဖြစ်ပြီး လျှပ်စစ်ရှော့ (ဆားကစ်ရှော့၊ မြေစိုက်ပျက်ကွက်မှု၊ လျှပ်စစ်ဓာတ်လိုက်ခြင်း၊ လျှပ်စစ်ယိုစိမ့်မှု စသည်) မတော်တဆမှုကြောင့် လူနှင့် ထုတ်ကုန်အပေါ် ပြင်းထန်စွာ သက်ရောက်သော ချို့ယွင်းချက်');
+K('단락','Đoản mạch','ไฟฟ้าลัดวงจร','শর্ট সার্কিট','短路','ဆားကစ်ရှော့');
+K('지락','Chạm đất','ไฟรั่วลงดิน','আর্থ ফল্ট','接地故障','မြေစိုက်ပျက်ကွက်မှု');
+K('감전','Điện giật','ไฟดูด','বিদ্যুৎস্পৃষ্টতা','触电','လျှပ်စစ်ဓာတ်လိုက်ခြင်း');
+K('누전','Rò điện','ไฟรั่ว','বিদ্যুৎ লিকেজ','漏电','လျှပ်စစ်ယိုစိမ့်ခြင်း');
+/* ---- flow page ---- */
+K('공정 이상 발생 처리 Flow','Quy trình xử lý bất thường trong công đoạn','ขั้นตอนการจัดการความผิดปกติในกระบวนการ','প্রক্রিয়ায় অস্বাভাবিকতা হ্যান্ডলিং ফ্লো','工序异常处理流程','လုပ်ငန်းစဉ်ချို့ယွင်းချက် ကိုင်တွယ်ပုံ လုပ်ငန်းစဉ်');
+K('8가지 경우(시료성/Lot성 × Line Stop 여부 × 공장장 승인/반려)를 선택해 재생할 수 있으며, 해당하지 않는 단계는 흐리게 표시됩니다.','Bạn có thể chọn và phát 8 trường hợp (lỗi mẫu/lô × có/không Line Stop × giám đốc nhà máy phê duyệt/từ chối); các bước không liên quan sẽ được làm mờ.','เลือกเล่นได้ 8 กรณี (ตัวอย่าง/ล็อต × หยุดไลน์หรือไม่ × ผู้จัดการโรงงานอนุมัติ/ปฏิเสธ) ขั้นตอนที่ไม่เกี่ยวข้องจะแสดงเป็นสีจาง','আপনি 8টি ক্ষেত্র (নমুনা/লট × Line Stop হবে কি না × প্ল্যান্ট ম্যানেজারের অনুমোদন/প্রত্যাখ্যান) বেছে চালাতে পারেন; অপ্রযোজ্য ধাপ ঝাপসা দেখায়।','可选择播放 8 种情形（样品/批次 × 是否停线 × 厂长批准/驳回），不适用的步骤会以淡色显示。','အခြေအနေ 8 မျိုး (နမူနာ/လော့တ် × Line Stop ဟုတ်/မဟုတ် × စက်ရုံမန်နေဂျာ အတည်ပြု/ပယ်ချ) ကို ရွေးချယ်ဖွင့်နိုင်ပြီး မသက်ဆိုင်သောအဆင့်များကို မှိန်၍ပြသည်။');
+K('재생','Phát','เล่น','চালান','播放','ဖွင့်မည်');
+K('일시정지','Tạm dừng','หยุดชั่วคราว','বিরতি','暂停','ခဏရပ်');
+K('다시 재생','Phát lại','เล่นอีกครั้ง','আবার চালান','重新播放','ပြန်ဖွင့်');
+K('이어서 재생','Phát tiếp','เล่นต่อ','চালিয়ে যান','继续播放','ဆက်ဖွင့်');
+K('‹ 이전 단계','‹ Bước trước','‹ ขั้นตอนก่อนหน้า','‹ আগের ধাপ','‹ 上一步','‹ ယခင်အဆင့်');
+K('다음 단계 ›','Bước tiếp ›','ขั้นตอนถัดไป ›','পরবর্তী ধাপ ›','下一步 ›','နောက်အဆင့် ›');
+K('다음 경우 ›','Trường hợp tiếp ›','กรณีถัดไป ›','পরবর্তী ক্ষেত্র ›','下一情形 ›','နောက်အခြေအနေ ›');
+K('↺ 처음으로','↺ Về đầu','↺ กลับไปเริ่มต้น','↺ শুরুতে ফিরুন','↺ 回到开头','↺ အစသို့');
+K('전체 보기','Xem toàn bộ','ดูทั้งหมด','সম্পূর্ণ দেখুন','查看全图','အားလုံးကြည့်');
+K('확대 보기','Xem phóng to','ดูแบบขยาย','জুম করে দেখুন','放大查看','ချဲ့ကြည့်');
+K('/ 8 경우의 수','/ 8 trường hợp','/ 8 กรณี','/ 8 টি ক্ষেত্র','/ 8 种情形','/ 8 ခု');
+K('아래 경우를 누르면 해당 경우가 재생되며, 끝나면 전체 Flow가 한눈에 표시됩니다.','Bấm vào một trường hợp bên dưới để phát; khi kết thúc sẽ hiển thị toàn bộ Flow.','กดที่กรณีด้านล่างเพื่อเล่น เมื่อจบจะแสดง Flow ทั้งหมดในภาพเดียว','নিচের কোনো ক্ষেত্রে ক্লিক করলে তা চলবে; শেষে পুরো Flow একসাথে দেখাবে।','点击下方情形即可播放，结束后将一览显示完整流程。','အောက်ပါ အခြေအနေကို နှိပ်ပါက ထိုအခြေအနေကို ဖွင့်ပြမည်ဖြစ်ပြီး ပြီးဆုံးပါက Flow တစ်ခုလုံးကို တစ်ပြိုင်နက် ပြသမည်။');
+K('모든 경우의 수를 차례로 보여 드립니다','Trình bày từng trường hợp','แสดงทีละกรณี','প্রতিটি ক্ষেত্র দেখানো হবে','将依次展示各情形','အခြေအနေများကို တစ်ခုချင်း ပြသပါမည်');
+K('시작 전','Trước khi bắt đầu','ก่อนเริ่ม','শুরুর আগে','开始前','စတင်မီ');
+K('재생 버튼을 누르거나, 다이어그램의 단계를 직접 눌러 보세요.','Bấm nút Phát hoặc bấm trực tiếp vào các bước trong sơ đồ.','กดปุ่มเล่น หรือกดที่ขั้นตอนในแผนภาพโดยตรง','চালান বোতাম চাপুন, অথবা ডায়াগ্রামের ধাপগুলোতে সরাসরি ক্লিক করুন।','请点击播放按钮，或直接点击图中的步骤。','ဖွင့်မည် ခလုတ်ကို နှိပ်ပါ၊ သို့မဟုတ် ပုံတွင်ရှိသော အဆင့်များကို တိုက်ရိုက်နှိပ်ကြည့်ပါ။');
+K('일반 단계','Bước thông thường','ขั้นตอนทั่วไป','সাধারণ ধাপ','一般步骤','ပုံမှန်အဆင့်');
+K('검토 · 승인','Xem xét · Phê duyệt','ตรวจสอบ · อนุมัติ','পর্যালোচনা · অনুমোদন','审核 · 批准','သုံးသပ် · အတည်ပြု');
+K('진행 완료','Đã hoàn thành','ดำเนินการแล้ว','সম্পন্ন','已完成','ပြီးစီး');
+K('해당 단계(진행 예정)','Bước áp dụng (sắp thực hiện)','ขั้นตอนที่เกี่ยวข้อง (รอดำเนินการ)','প্রযোজ্য ধাপ (আসন্ন)','适用步骤（待进行）','သက်ဆိုင်သောအဆင့် (လာမည်)');
+K('해당 없음(흐리게)','Không áp dụng (làm mờ)','ไม่เกี่ยวข้อง (สีจาง)','প্রযোজ্য নয় (ঝাপসা)','不适用（淡色）','မသက်ဆိုင် (မှိန်)');
+K('현재 단계','Bước hiện tại','ขั้นตอนปัจจุบัน','বর্তমান ধাপ','当前步骤','လက်ရှိအဆင့်');
+K('왼쪽 열 : 상위 보고 체계','Cột bên trái: hệ thống báo cáo lên cấp trên','คอลัมน์ซ้าย: สายการรายงานระดับสูง','বাম কলাম: ঊর্ধ্বতন প্রতিবেদন ব্যবস্থা','左列：向上汇报体系','ဘယ်ဘက်ကော်လံ - အထက်သို့ အစီရင်ခံစနစ်');
+/* nodes */
+K('입고/생산/검사','Nhập kho/Sản xuất/Kiểm tra','รับเข้า/ผลิต/ตรวจสอบ','ইনকামিং/উৎপাদন/পরিদর্শন','入库/生产/检验','လက်ခံ/ထုတ်လုပ်/စစ်ဆေး');
+K('불량(OS&D) 발생','Phát sinh lỗi (OS&D)','เกิดข้อบกพร่อง (OS&D)','ত্রুটি (OS&D) ঘটেছে','发生不良 (OS&D)','ချို့ယွင်းချက် (OS&D) ဖြစ်ပေါ်');
+K('작업長 보고','Báo cáo tổ trưởng','รายงานหัวหน้าไลน์','লাইন সুপারভাইজারকে রিপোর্ট','报告班长','လုပ်ငန်းခွဲခေါင်းဆောင်သို့ အစီရင်ခံ');
+K('팀장 보고','Báo cáo trưởng nhóm','รายงานหัวหน้าทีม','টিম লিডারকে রিপোর্ট','报告组长','အဖွဲ့မှူးသို့ အစီရင်ခံ');
+K('공장장 보고','Báo cáo giám đốc NM','รายงานผู้จัดการโรงงาน','প্ল্যান্ট ম্যানেজারকে রিপোর্ট','报告厂长','စက်ရုံမန်နေဂျာသို့ အစီရင်ခံ');
+K('대표이사 보고','Báo cáo tổng giám đốc','รายงานกรรมการผู้จัดการ','ব্যবস্থাপনা পরিচালককে রিপোর্ট','报告总经理','ဦးဆောင်ညွှန်ကြားရေးမှူးသို့ အစီရင်ခံ');
+K('이상 확인','Xác nhận bất thường','ตรวจสอบความผิดปกติ','অস্বাভাবিকতা নিশ্চিত করা','确认异常','ချို့ယွင်းချက် စစ်ဆေးအတည်ပြု');
+K('3현/3즉에 의한 확인','Xác nhận theo 3 Hiện/3 Tức','ตรวจสอบตามหลัก 3 จริง/3 ทันที','3 প্রত্যক্ষ/3 তাৎক্ষণিক অনুযায়ী যাচাই','按“三现/三即”确认','၃ မျိုး/ချက်ချင်း ၃ မျိုး အလိုက် စစ်ဆေး');
+K('작업長 검토','Tổ trưởng xem xét','หัวหน้าไลน์ตรวจสอบ','লাইন সুপারভাইজারের পর্যালোচনা','班长审核','လုပ်ငန်းခွဲခေါင်းဆောင် သုံးသပ်');
+K('시료성 / Lot성 구분','Phân loại lỗi mẫu / theo lô','แยกประเภทตัวอย่าง / ล็อต','নমুনা / লট বিভাজন','区分样品性/批次性','နမူနာ/လော့တ် ခွဲခြားခြင်း');
+K('시료 불량 처리','Xử lý lỗi mẫu','จัดการข้อบกพร่องตัวอย่าง','নমুনা ত্রুটি নিষ্পত্তি','样品不良处理','နမူနာချို့ယွင်းချက် ကိုင်တွယ်ခြင်း');
+K('실적관리/피드백','Quản lý kết quả/Phản hồi','จัดการผลงาน/ป้อนกลับ','ফলাফল ব্যবস্থাপনা/ফিডব্যাক','业绩管理/反馈','ရလဒ်စီမံခန့်ခွဲမှု/တုံ့ပြန်ချက်');
+K('실적관리 / 피드백','Quản lý kết quả / Phản hồi','จัดการผลงาน / ป้อนกลับ','ফলাফল ব্যবস্থাপনা / ফিডব্যাক','业绩管理 / 反馈','ရလဒ်စီမံခန့်ခွဲမှု / တုံ့ပြန်ချက်');
+K('조치 / 대책 수립','Xử lý / Lập đối sách','ดำเนินการ / กำหนดมาตรการ','ব্যবস্থা / প্রতিকার পরিকল্পনা','处理 / 制定对策','ဆောင်ရွက်ခြင်း / ဖြေရှင်းချက်ချမှတ်ခြင်း');
+K('팀장 검토','Trưởng nhóm xem xét','หัวหน้าทีมตรวจสอบ','টিম লিডারের পর্যালোচনা','组长审核','အဖွဲ့မှူး သုံးသပ်');
+K('Line Stop 여부 판단','Quyết định có Line Stop hay không','ตัดสินใจว่าจะหยุดไลน์หรือไม่','Line Stop হবে কি না সিদ্ধান্ত','判断是否停线','Line Stop လုပ်မလုပ် ဆုံးဖြတ်');
+K('임시 대책/조치','Đối sách/Xử lý tạm thời','มาตรการ/การดำเนินการชั่วคราว','অস্থায়ী প্রতিকার/ব্যবস্থা','临时对策/处理','ယာယီဖြေရှင်းချက်/ဆောင်ရွက်ချက်');
+K('임시 대책 / 조치','Đối sách / Xử lý tạm thời','มาตรการ / การดำเนินการชั่วคราว','অস্থায়ী প্রতিকার / ব্যবস্থা','临时对策 / 处理','ယာယီဖြေရှင်းချက် / ဆောင်ရွက်ချက်');
+K('공장장 승인','Giám đốc NM phê duyệt','ผู้จัดการโรงงานอนุมัติ','প্ল্যান্ট ম্যানেজারের অনুমোদন','厂长批准','စက်ရုံမန်နေဂျာ အတည်ပြု');
+K('근본 대책 수립','Lập đối sách gốc','กำหนดมาตรการแก้ไขที่ต้นเหตุ','মূল প্রতিকার পরিকল্পনা','制定根本对策','အမြစ်ဖြတ် ဖြေရှင်းချက် ချမှတ်');
+K('공정 정상 복귀','Công đoạn trở lại bình thường','กระบวนการกลับสู่ปกติ','প্রক্রিয়া স্বাভাবিকে ফিরেছে','工序恢复正常','လုပ်ငန်းစဉ် ပုံမှန်သို့ ပြန်လည်');
+/* notes / edge labels */
+K('OS&D 식별 스티커','Dán nhãn nhận dạng OS&D','ติดสติกเกอร์ระบุ OS&D','OS&D শনাক্তকরণ স্টিকার','OS&D 识别标签','OS&D သတ်မှတ်စတစ်ကာ');
+K('부적합 Tag','Thẻ không phù hợp','แท็กไม่ตรงตามข้อกำหนด','অসঙ্গতি ট্যাগ','不合格标签','မကိုက်ညီမှု Tag');
+K('부적합 지정 장소 이동','Chuyển đến khu vực chỉ định hàng không phù hợp','ย้ายไปยังพื้นที่ที่กำหนดสำหรับของไม่ตรงตามข้อกำหนด','অসঙ্গতিপূর্ণ পণ্যের নির্ধারিত স্থানে সরানো','移至不合格品指定区域','မကိုက်ညီသောပစ္စည်း သတ်မှတ်နေရာသို့ ရွှေ့ပြောင်း');
+K('OS&D 분석/개선 현황표','Bảng phân tích/cải tiến OS&D','ตารางวิเคราะห์/ปรับปรุง OS&D','OS&D বিশ্লেষণ/উন্নয়ন অবস্থা চার্ট','OS&D 分析/改善状况表','OS&D ခွဲခြမ်းစိတ်ဖြာ/တိုးတက်မှု ဇယား');
+K('관련부서 피드백','Phản hồi cho bộ phận liên quan','ป้อนกลับไปยังแผนกที่เกี่ยวข้อง','সংশ্লিষ্ট বিভাগকে ফিডব্যাক','反馈给相关部门','သက်ဆိုင်ရာဌာနများသို့ တုံ့ပြန်ချက်');
+K('자체 및 관련부서','Nội bộ và bộ phận liên quan','ภายในและแผนกที่เกี่ยวข้อง','নিজস্ব ও সংশ্লিষ্ট বিভাগ','本部门及相关部门','မိမိဌာနနှင့် သက်ဆိုင်ရာဌာန');
+K('대책 수립/합의','Lập/thống nhất đối sách','กำหนด/ตกลงมาตรการ','প্রতিকার পরিকল্পনা/সম্মতি','制定/商定对策','ဖြေရှင်းချက်ချမှတ်/သဘောတူ');
+K('4M 유지/개선 대책서','Phiếu đối sách duy trì/cải tiến 4M','เอกสารมาตรการคงสภาพ/ปรับปรุง 4M','4M রক্ষণাবেক্ষণ/উন্নয়ন প্রতিকার পত্র','4M 维持/改善对策书','4M ထိန်းသိမ်း/တိုးတက်မှု ဖြေရှင်းချက်စာ');
+K('재발방지 대책','Đối sách phòng ngừa tái phát','มาตรการป้องกันการเกิดซ้ำ','পুনরাবৃত্তি প্রতিরোধ ব্যবস্থা','防止再发对策','ထပ်မံမဖြစ်စေရေး ဖြေရှင်းချက်');
+K('발견부서 · 관련부서','Bộ phận phát hiện · Bộ phận liên quan','แผนกที่พบ · แผนกที่เกี่ยวข้อง','শনাক্তকারী বিভাগ · সংশ্লিষ্ট বিভাগ','发现部门 · 相关部门','တွေ့ရှိသောဌာန · သက်ဆိုင်ရာဌာန');
+K('보고 체계','Hệ thống báo cáo','สายการรายงาน','প্রতিবেদন ব্যবস্থা','汇报体系','အစီရင်ခံစနစ်');
+K('▲ 상위 보고','▲ Báo cáo lên cấp trên','▲ รายงานระดับสูง','▲ ঊর্ধ্বতনকে রিপোর্ট','▲ 向上汇报','▲ အထက်သို့ အစီရင်ခံ');
+K('Lot성 · 작업長 조치 불가','Lỗi theo lô · Tổ trưởng không xử lý được','ล็อต · หัวหน้าไลน์ดำเนินการไม่ได้','লট · লাইন সুপারভাইজার ব্যবস্থা নিতে অক্ষম','批次性 · 班长无法处理','လော့တ် · လုပ်ငန်းခွဲခေါင်းဆောင် မဆောင်ရွက်နိုင်');
+K('시료성 · 조치 가능','Lỗi mẫu · Có thể xử lý','ตัวอย่าง · ดำเนินการได้','নমুনা · ব্যবস্থা সম্ভব','样品性 · 可处理','နမူနာ · ဆောင်ရွက်နိုင်');
+K('No · 재조치','No · Xử lý lại','No · ดำเนินการซ้ำ','No · পুনরায় ব্যবস্থা','No · 重新处理','No · ပြန်ဆောင်ရွက်');
+K('No · 재검토','No · Xem xét lại','No · ตรวจสอบใหม่','No · পুনর্বিবেচনা','No · 重新审核','No · ပြန်သုံးသပ်');
+/* descriptions */
+K('입고 · 생산 · 검사 공정이 진행됩니다.','Các công đoạn nhập kho · sản xuất · kiểm tra đang diễn ra.','กระบวนการรับเข้า · ผลิต · ตรวจสอบกำลังดำเนินอยู่','ইনকামিং · উৎপাদন · পরিদর্শন প্রক্রিয়া চলছে।','入库 · 生产 · 检验工序正在进行。','လက်ခံခြင်း · ထုတ်လုပ်ခြင်း · စစ်ဆေးခြင်း လုပ်ငန်းစဉ်များ ဆောင်ရွက်နေသည်။');
+K('입고 / 공정 이상이 발생합니다. 보고 체계가 시작됩니다.','Xảy ra bất thường khi nhập kho / trong công đoạn. Hệ thống báo cáo được kích hoạt.','เกิดความผิดปกติตอนรับเข้า / ในกระบวนการ เริ่มสายการรายงาน','ইনকামিং / প্রক্রিয়ায় অস্বাভাবিকতা ঘটেছে। প্রতিবেদন ব্যবস্থা শুরু হয়।','入库/工序中发生异常，汇报体系启动。','လက်ခံစဉ် / လုပ်ငန်းစဉ်အတွင်း ချို့ယွင်းချက်ဖြစ်ပေါ်ပါသည်။ အစီရင်ခံစနစ် စတင်ပါသည်။');
+K('3현/3즉에 의한 확인을 실시합니다.','Thực hiện xác nhận theo 3 Hiện/3 Tức.','ตรวจสอบตามหลัก 3 จริง/3 ทันที','3 প্রত্যক্ষ/3 তাৎক্ষণিক অনুযায়ী যাচাই করা হয়।','按“三现/三即”进行确认。','၃ မျိုး/ချက်ချင်း ၃ မျိုး အလိုက် စစ်ဆေးအတည်ပြုပါသည်။');
+K('불량 유형이 시료성이면 작업長 조치 가능, Lot성이면 작업長 조치 불가로 팀장 검토로 넘어갑니다.','Nếu là lỗi mẫu thì tổ trưởng có thể xử lý; nếu là lỗi theo lô thì tổ trưởng không xử lý được và chuyển sang trưởng nhóm xem xét.','หากเป็นข้อบกพร่องระดับตัวอย่าง หัวหน้าไลน์ดำเนินการได้ หากเป็นระดับล็อต หัวหน้าไลน์ดำเนินการไม่ได้และส่งต่อให้หัวหน้าทีมตรวจสอบ','ত্রুটি নমুনা-ধরনের হলে লাইন সুপারভাইজার ব্যবস্থা নিতে পারেন; লট-ধরনের হলে পারেন না, তখন টিম লিডারের পর্যালোচনায় যায়।','若为样品性不良，班长可处理；若为批次性不良，班长无法处理，转交组长审核。','ချို့ယွင်းချက်သည် နမူနာအမျိုးအစားဖြစ်လျှင် လုပ်ငန်းခွဲခေါင်းဆောင်က ဆောင်ရွက်နိုင်ပြီး လော့တ်အမျိုးအစားဖြစ်လျှင် မဆောင်ရွက်နိုင်သဖြင့် အဖွဲ့မှူး၏ သုံးသပ်ချက်သို့ ပေးပို့သည်။');
+K('OS&D 식별 스티커 부착 → 부적합 Tag → 부적합 지정 장소로 이동','Dán nhãn nhận dạng OS&D → Thẻ không phù hợp → Chuyển đến khu vực chỉ định','ติดสติกเกอร์ OS&D → แท็กไม่ตรงตามข้อกำหนด → ย้ายไปยังพื้นที่ที่กำหนด','OS&D স্টিকার লাগান → অসঙ্গতি ট্যাগ → নির্ধারিত স্থানে সরান','粘贴 OS&D 识别标签 → 不合格标签 → 移至指定区域','OS&D စတစ်ကာ ကပ်ခြင်း → မကိုက်ညီမှု Tag → သတ်မှတ်နေရာသို့ ရွှေ့ခြင်း');
+K('OS&D 분석/개선 현황표 작성, 관련부서 피드백','Lập bảng phân tích/cải tiến OS&D, phản hồi cho bộ phận liên quan','จัดทำตารางวิเคราะห์/ปรับปรุง OS&D และป้อนกลับไปยังแผนกที่เกี่ยวข้อง','OS&D বিশ্লেষণ/উন্নয়ন অবস্থা চার্ট তৈরি, সংশ্লিষ্ট বিভাগকে ফিডব্যাক','编制 OS&D 分析/改善状况表，反馈给相关部门','OS&D ခွဲခြမ်းစိတ်ဖြာ/တိုးတက်မှု ဇယားပြုစုခြင်း၊ သက်ဆိုင်ရာဌာနများသို့ တုံ့ပြန်ချက်');
+K('자체 및 관련부서 대책 수립/합의, 4M 유지/개선 대책서','Lập/thống nhất đối sách nội bộ và với bộ phận liên quan, phiếu đối sách duy trì/cải tiến 4M','กำหนด/ตกลงมาตรการร่วมกับแผนกที่เกี่ยวข้อง เอกสารมาตรการคงสภาพ/ปรับปรุง 4M','নিজস্ব ও সংশ্লিষ্ট বিভাগের প্রতিকার পরিকল্পনা/সম্মতি, 4M রক্ষণাবেক্ষণ/উন্নয়ন প্রতিকার পত্র','本部门及相关部门制定/商定对策，4M 维持/改善对策书','မိမိဌာနနှင့် သက်ဆိုင်ရာဌာန ဖြေရှင်းချက်ချမှတ်/သဘောတူခြင်း၊ 4M ထိန်းသိမ်း/တိုးတက်မှု ဖြေရှင်းချက်စာ');
+K('Line Stop 여부를 판단합니다. Yes → Line Stop / No → 공장장 승인','Quyết định có Line Stop hay không. Yes → Line Stop / No → Giám đốc nhà máy phê duyệt','ตัดสินใจว่าจะหยุดไลน์หรือไม่ Yes → หยุดไลน์ / No → ผู้จัดการโรงงานอนุมัติ','Line Stop হবে কি না সিদ্ধান্ত নেওয়া হয়। Yes → Line Stop / No → প্ল্যান্ট ম্যানেজারের অনুমোদন','判断是否停线。Yes → 停线 / No → 厂长批准','Line Stop လုပ်မလုပ် ဆုံးဖြတ်သည်။ Yes → Line Stop / No → စက်ရုံမန်နေဂျာ အတည်ပြု');
+K('라인을 정지합니다.','Dừng dây chuyền.','หยุดไลน์การผลิต','লাইন বন্ধ করা হয়।','停止产线。','လိုင်းကို ရပ်တန့်ပါသည်။');
+K('임시 대책과 조치를 시행합니다.','Thực hiện đối sách và xử lý tạm thời.','ดำเนินมาตรการและการจัดการชั่วคราว','অস্থায়ী প্রতিকার ও ব্যবস্থা নেওয়া হয়।','实施临时对策和处理。','ယာယီဖြေရှင်းချက်နှင့် ဆောင်ရွက်ချက်များ ပြုလုပ်ပါသည်။');
+K('Yes → 근본 대책 수립 / No → 임시 대책/조치 재시행','Yes → Lập đối sách gốc / No → Thực hiện lại đối sách/xử lý tạm thời','Yes → กำหนดมาตรการแก้ไขที่ต้นเหตุ / No → ดำเนินมาตรการชั่วคราวซ้ำ','Yes → মূল প্রতিকার পরিকল্পনা / No → অস্থায়ী প্রতিকার/ব্যবস্থা পুনরায়','Yes → 制定根本对策 / No → 重新实施临时对策/处理','Yes → အမြစ်ဖြတ်ဖြေရှင်းချက် ချမှတ် / No → ယာယီဖြေရှင်းချက် ပြန်လည်ဆောင်ရွက်');
+K('Yes → 근본 대책 수립 / No → 팀장 재검토','Yes → Lập đối sách gốc / No → Trưởng nhóm xem xét lại','Yes → กำหนดมาตรการแก้ไขที่ต้นเหตุ / No → หัวหน้าทีมตรวจสอบใหม่','Yes → মূল প্রতিকার পরিকল্পনা / No → টিম লিডারের পুনর্বিবেচনা','Yes → 制定根本对策 / No → 组长重新审核','Yes → အမြစ်ဖြတ်ဖြေရှင်းချက် ချမှတ် / No → အဖွဲ့မှူး ပြန်သုံးသပ်');
+K('재발방지 대책 — 발견부서 · 관련부서, 4M 유지/개선 대책서','Đối sách phòng ngừa tái phát — Bộ phận phát hiện · Bộ phận liên quan, phiếu đối sách duy trì/cải tiến 4M','มาตรการป้องกันการเกิดซ้ำ — แผนกที่พบ · แผนกที่เกี่ยวข้อง เอกสารมาตรการคงสภาพ/ปรับปรุง 4M','পুনরাবৃত্তি প্রতিরোধ ব্যবস্থা — শনাক্তকারী বিভাগ · সংশ্লিষ্ট বিভাগ, 4M রক্ষণাবেক্ষণ/উন্নয়ন প্রতিকার পত্র','防止再发对策 — 发现部门 · 相关部门，4M 维持/改善对策书','ထပ်မံမဖြစ်စေရေး ဖြေရှင်းချက် — တွေ့ရှိသောဌာန · သက်ဆိုင်ရာဌာန၊ 4M ထိန်းသိမ်း/တိုးတက်မှု ဖြေရှင်းချက်စာ');
+K('처리가 완료되어 공정이 정상으로 복귀합니다.','Xử lý hoàn tất, công đoạn trở lại bình thường.','การจัดการเสร็จสิ้น กระบวนการกลับสู่ปกติ','নিষ্পত্তি সম্পন্ন হয়ে প্রক্রিয়া স্বাভাবিকে ফিরে এসেছে।','处理完成，工序恢复正常。','ကိုင်တွယ်မှု ပြီးဆုံး၍ လုပ်ငန်းစဉ် ပုံမှန်သို့ ပြန်လည်ရောက်ရှိသည်။');
+K('공장장 반려(No) → 임시 대책/조치로 되돌아가 다시 시행합니다.','Giám đốc nhà máy từ chối (No) → quay lại và thực hiện lại đối sách/xử lý tạm thời.','ผู้จัดการโรงงานปฏิเสธ (No) → ย้อนกลับไปดำเนินมาตรการ/การจัดการชั่วคราวอีกครั้ง','প্ল্যান্ট ম্যানেজার প্রত্যাখ্যান (No) → অস্থায়ী প্রতিকার/ব্যবস্থায় ফিরে গিয়ে আবার করা হয়।','厂长驳回（No）→ 返回并重新实施临时对策/处理。','စက်ရုံမန်နေဂျာ ပယ်ချ (No) → ယာယီဖြေရှင်းချက်/ဆောင်ရွက်ချက်သို့ ပြန်သွား၍ ထပ်မံဆောင်ရွက်သည်။');
+K('공장장 승인 (재승인)','Giám đốc NM phê duyệt (lần nữa)','ผู้จัดการโรงงานอนุมัติ (อนุมัติซ้ำ)','প্ল্যান্ট ম্যানেজারের অনুমোদন (পুনঃঅনুমোদন)','厂长批准（再次批准）','စက်ရုံမန်နေဂျာ အတည်ပြု (ထပ်မံအတည်ပြု)');
+K('재시행한 조치를 공장장이 다시 승인 검토합니다.','Giám đốc nhà máy xem xét phê duyệt lại biện pháp đã thực hiện lại.','ผู้จัดการโรงงานตรวจสอบอนุมัติมาตรการที่ดำเนินการซ้ำอีกครั้ง','পুনরায় নেওয়া ব্যবস্থা প্ল্যান্ট ম্যানেজার আবার অনুমোদনের জন্য পর্যালোচনা করেন।','厂长再次审核批准重新实施的措施。','ပြန်လည်ဆောင်ရွက်ထားသော ဆောင်ရွက်ချက်ကို စက်ရုံမန်နေဂျာက ထပ်မံအတည်ပြုရန် သုံးသပ်သည်။');
+K('팀장 재검토','Trưởng nhóm xem xét lại','หัวหน้าทีมตรวจสอบใหม่','টিম লিডারের পুনর্বিবেচনা','组长重新审核','အဖွဲ့မှူး ပြန်သုံးသပ်');
+K('공장장 반려(No) → 팀장 검토로 되돌아가 다시 검토합니다.','Giám đốc nhà máy từ chối (No) → quay lại trưởng nhóm để xem xét lại.','ผู้จัดการโรงงานปฏิเสธ (No) → ย้อนกลับไปให้หัวหน้าทีมตรวจสอบใหม่','প্ল্যান্ট ম্যানেজার প্রত্যাখ্যান (No) → টিম লিডারের পর্যালোচনায় ফিরে আবার বিবেচনা করা হয়।','厂长驳回（No）→ 返回组长审核并重新审核。','စက်ရုံမန်နေဂျာ ပယ်ချ (No) → အဖွဲ့မှူး၏ သုံးသပ်ချက်သို့ ပြန်သွား၍ ပြန်လည်သုံးသပ်သည်။');
+K('재검토한 결과를 공장장이 다시 승인 검토합니다.','Giám đốc nhà máy xem xét phê duyệt lại kết quả đã xem xét lại.','ผู้จัดการโรงงานตรวจสอบอนุมัติผลการตรวจสอบใหม่อีกครั้ง','পুনর্বিবেচিত ফলাফল প্ল্যান্ট ম্যানেজার আবার অনুমোদনের জন্য পর্যালোচনা করেন।','厂长再次审核批准重新审核的结果。','ပြန်လည်သုံးသပ်ထားသော ရလဒ်ကို စက်ရုံမန်နေဂျာက ထပ်မံအတည်ပြုရန် သုံးသပ်သည်။');
+/* patterns */
+K('경우 {n}','Trường hợp {n}','กรณีที่ {n}','ক্ষেত্র {n}','情形 {n}','အခြေအနေ {n}');
+K('경우 {n} / {t}','Trường hợp {n} / {t}','กรณีที่ {n} / {t}','ক্ষেত্র {n} / {t}','情形 {n} / {t}','အခြေအနေ {n} / {t}');
+K('경우 {n} 시작 — 작업長 검토','Bắt đầu trường hợp {n} — Tổ trưởng xem xét','เริ่มกรณีที่ {n} — หัวหน้าไลน์ตรวจสอบ','ক্ষেত্র {n} শুরু — লাইন সুপারভাইজারের পর্যালোচনা','情形 {n} 开始 — 班长审核','အခြေအနေ {n} စတင် — လုပ်ငန်းခွဲခေါင်းဆောင် သုံးသပ်');
+K('같은 이상 건이 다른 경우로 처리될 때의 흐름입니다. ({tags})','Luồng khi cùng một sự cố bất thường được xử lý theo trường hợp khác. ({tags})','ลำดับขั้นตอนเมื่อความผิดปกติเดียวกันถูกจัดการในกรณีอื่น ({tags})','একই অস্বাভাবিকতা অন্য ক্ষেত্রে নিষ্পত্তি হলে প্রবাহ এমন। ({tags})','同一异常按另一种情形处理时的流程。（{tags}）','တူညီသော ချို့ယွင်းချက်ကို အခြားအခြေအနေအဖြစ် ကိုင်တွယ်သည့်အခါ လုပ်ငန်းစဉ်ဖြစ်သည်။ ({tags})');
+K('시료성','Lỗi mẫu','ตัวอย่าง','নমুনা','样品性','နမူနာ');
+K('Lot성','Lỗi theo lô','ระดับล็อต','লট','批次性','လော့တ်');
+K('Line Stop 불필요','Không cần Line Stop','ไม่ต้องหยุดไลน์','Line Stop প্রয়োজন নেই','无需停线','Line Stop မလိုအပ်');
+K('공장장 반려 후 재처리','Giám đốc NM từ chối, xử lý lại','ผู้จัดการโรงงานปฏิเสธ แล้วดำเนินการใหม่','প্ল্যান্ট ম্যানেজার প্রত্যাখ্যান করলে পুনরায় নিষ্পত্তি','厂长驳回后重新处理','စက်ရုံမန်နေဂျာ ပယ်ချပြီး ပြန်လည်ကိုင်တွယ်');
+/* ---- ops page ---- */
+K('Line Stop 운영 기준','Tiêu chuẩn vận hành Line Stop','เกณฑ์การปฏิบัติงาน Line Stop','Line Stop পরিচালনা মানদণ্ড','Line Stop 运行标准','Line Stop လည်ပတ်မှုစံနှုန်း');
+K('구분을 선택하면 해당 항목의 이상 발생 기준 · Stop 주체 · 관련 규격 페이지로 전환됩니다.','Chọn một hạng mục để chuyển sang trang tiêu chuẩn bất thường, người quyết định Stop và quy cách liên quan.','เมื่อเลือกหมวด จะสลับไปยังหน้าเกณฑ์ความผิดปกติ ผู้สั่งหยุด และมาตรฐานที่เกี่ยวข้องของหมวดนั้น','একটি বিভাগ নির্বাচন করলে সংশ্লিষ্ট অস্বাভাবিকতার মানদণ্ড · Stop-এর দায়িত্বশীল ব্যক্তি · সংশ্লিষ্ট স্পেসিফিকেশন পাতায় যাবে।','选择类别后，将切换到该类别的异常发生标准 · 停线责任人 · 相关规格页面。','အမျိုးအစားကို ရွေးချယ်ပါက ထိုအမျိုးအစား၏ ချို့ယွင်းချက်ဖြစ်ပေါ်မှုစံနှုန်း · Stop ပြုလုပ်သူ · သက်ဆိုင်ရာ စံချိန်စံညွှန်းစာမျက်နှာသို့ ပြောင်းမည်။');
+K('관리항목(원인) 이상','Bất thường hạng mục quản lý (nguyên nhân)','ความผิดปกติของรายการควบคุม (สาเหตุ)','ব্যবস্থাপনা আইটেম (কারণ) অস্বাভাবিকতা','管理项目（原因）异常','စီမံခန့်ခွဲမှုအချက် (အကြောင်းရင်း) ချို့ယွင်းချက်');
+K('품질(결과)특성','Đặc tính chất lượng (kết quả)','คุณลักษณะคุณภาพ (ผลลัพธ์)','মান (ফলাফল) বৈশিষ্ট্য','品质（结果）特性','အရည်အသွေး (ရလဒ်) လက္ခဏာ');
+K('이상','Bất thường','ความผิดปกติ','অস্বাভাবিকতা','异常','ချို့ယွင်းချက်');
+K('{n}건','{n} mục','{n} รายการ','{n} টি','{n} 项','{n} ခု');
+K('{t} 이상 시 Line Stop 기준','Tiêu chuẩn Line Stop khi {t} bất thường','เกณฑ์ Line Stop เมื่อ {t} ผิดปกติ','{t} অস্বাভাবিকতায় Line Stop মানদণ্ড','{t}异常时的 Line Stop 标准','{t} ချို့ယွင်းချက်ဖြစ်ပါက Line Stop စံနှုန်း');
+K('4M 1E 관리항목(원인) 이상 · {e}','Bất thường hạng mục quản lý 4M 1E (nguyên nhân) · {e}','ความผิดปกติของรายการควบคุม 4M 1E (สาเหตุ) · {e}','4M 1E ব্যবস্থাপনা আইটেম (কারণ) অস্বাভাবিকতা · {e}','4M 1E 管理项目（原因）异常 · {e}','4M 1E စီမံခန့်ခွဲမှုအချက် (အကြောင်းရင်း) ချို့ယွင်းချက် · {e}');
+K('품질(결과)특성 이상 · {e}','Bất thường đặc tính chất lượng (kết quả) · {e}','ความผิดปกติของคุณลักษณะคุณภาพ (ผลลัพธ์) · {e}','মান (ফলাফল) বৈশিষ্ট্যের অস্বাভাবিকতা · {e}','品质（结果）特性异常 · {e}','အရည်အသွေး (ရလဒ်) လက္ခဏာ ချို့ယွင်းချက် · {e}');
+K('이상 발생 항목','Hạng mục bất thường phát sinh','รายการที่เกิดความผิดปกติ','ঘটে যাওয়া অস্বাভাবিকতার আইটেম','发生异常的项目','ချို့ယွင်းချက်ဖြစ်ပေါ်သော အချက်');
+K('Stop 주체','Người quyết định Stop','ผู้สั่งหยุด (Stop)','Stop-এর দায়িত্বশীল','停线责任人','Stop ပြုလုပ်သူ');
+K('관련 기준 / 규격','Tiêu chuẩn / Quy cách liên quan','เกณฑ์ / ข้อกำหนดที่เกี่ยวข้อง','সংশ্লিষ্ট মানদণ্ড / স্পেসিফিকেশন','相关标准 / 规格','သက်ဆိုင်ရာ စံနှုန်း / သတ်မှတ်ချက်');
+K('Stop 주체 (이 구분에서 사용)','Người quyết định Stop (dùng trong hạng mục này)','ผู้สั่งหยุด (ที่ใช้ในหมวดนี้)','Stop-এর দায়িত্বশীল (এই বিভাগে ব্যবহৃত)','停线责任人（本类别中使用）','Stop ပြုလုပ်သူ (ဤအမျိုးအစားတွင် အသုံးပြု)');
+K('이전 구분','Hạng mục trước','หมวดก่อนหน้า','আগের বিভাগ','上一类别','ယခင်အမျိုးအစား');
+K('다음 구분','Hạng mục sau','หมวดถัดไป','পরবর্তী বিভাগ','下一类别','နောက်အမျိုးအစား');
+K('작업長','Tổ trưởng','หัวหน้าไลน์','লাইন সুপারভাইজার','班长','လုပ်ငန်းခွဲခေါင်းဆောင်');
+K('팀장','Trưởng nhóm','หัวหน้าทีม','টিম লিডার','组长','အဖွဲ့မှူး');
+K('공장장','Giám đốc NM','ผู้จัดการโรงงาน','প্ল্যান্ট ম্যানেজার','厂长','စက်ရုံမန်နေဂျာ');
+K('품질부','Bộ phận Chất lượng','ฝ่ายคุณภาพ','কোয়ালিটি বিভাগ','品质部','အရည်အသွေးဌာန');
+/* categories */
+K('사람','Con người','คน','মানুষ','人员','လူ');
+K('작업자·인원 관련 이상 발생 시','Khi xảy ra bất thường liên quan đến công nhân · nhân sự','เมื่อเกิดความผิดปกติเกี่ยวกับผู้ปฏิบัติงาน·บุคลากร','কর্মী·জনবল সংক্রান্ত অস্বাভাবিকতা ঘটলে','发生与作业人员相关的异常时','အလုပ်သမား·ဝန်ထမ်းနှင့်ဆိုင်သော ချို့ယွင်းချက်ဖြစ်ပါက');
+K('비인증자 투입','Bố trí người chưa được chứng nhận','ให้ผู้ที่ไม่ผ่านการรับรองเข้าปฏิบัติงาน','অননুমোদিত (সার্টিফিকেশনহীন) ব্যক্তিকে নিয়োগ','投入未认证人员','လက်မှတ်မရှိသူကို အလုပ်ခန့်ထားခြင်း');
+K('이상 발생 처리범위가 전/후 공정에 영향을 미칠 때','Khi phạm vi xử lý bất thường ảnh hưởng đến công đoạn trước/sau','เมื่อขอบเขตการจัดการความผิดปกติส่งผลกระทบต่อกระบวนการก่อนหน้า/ถัดไป','অস্বাভাবিকতা নিষ্পত্তির পরিধি আগের/পরের প্রক্রিয়াকে প্রভাবিত করলে','当异常处理范围影响前/后工序时','ချို့ယွင်းချက်ကိုင်တွယ်မှုနယ်ပယ်က ရှေ့/နောက်လုပ်ငန်းစဉ်ကို သက်ရောက်လျှင်');
+K('* 자격인증','* Chứng nhận năng lực','* การรับรองคุณสมบัติ','* যোগ্যতা সনদ','* 资格认证','* အရည်အချင်းလက်မှတ်');
+K('1. 중요기본작업(납땜,압착,나사체결)','1. Công việc cơ bản quan trọng (hàn, ép đầu cos, siết vít)','1. งานพื้นฐานสำคัญ (บัดกรี, ย้ำ, ขันสกรู)','1. গুরুত্বপূর্ণ মৌলিক কাজ (সোল্ডারিং, ক্রিম্পিং, স্ক্রু বাঁধা)','1. 重要基本作业（焊接、压接、螺丝紧固）','1. အရေးကြီးသော အခြေခံလုပ်ငန်း (ဂဟေဆော်၊ ဖိကပ်၊ ဝက်အူချ)');
+K('2. 입고/공정/출하 검사원','2. Nhân viên kiểm tra nhập kho/công đoạn/xuất hàng','2. พนักงานตรวจสอบรับเข้า/ในกระบวนการ/ส่งออก','2. ইনকামিং/প্রক্রিয়া/শিপমেন্ট পরিদর্শক','2. 来料/过程/出货检验员','2. လက်ခံ/လုပ်ငန်းစဉ်/ပို့ဆောင် စစ်ဆေးသူ');
+K('3. 제품별 생산 투입 자격 인증','3. Chứng nhận đủ điều kiện sản xuất theo từng sản phẩm','3. การรับรองคุณสมบัติเข้าผลิตแยกตามผลิตภัณฑ์','3. পণ্যভিত্তিক উৎপাদনে নিয়োগের যোগ্যতা সনদ','3. 各产品生产投入资格认证','3. ထုတ်ကုန်အလိုက် ထုတ်လုပ်မှုတွင် ပါဝင်ခွင့်လက်မှတ်');
+K('재료','Vật liệu','วัสดุ','উপকরণ','材料','ပစ္စည်း');
+K('투입 자재·임가공품 관련 이상 발생 시','Khi xảy ra bất thường liên quan đến vật tư đầu vào · hàng gia công ngoài','เมื่อเกิดความผิดปกติเกี่ยวกับวัสดุที่ป้อนเข้า·งานจ้างแปรรูป','ইনপুট উপকরণ·আউটসোর্স প্রক্রিয়াজাত পণ্য সংক্রান্ত অস্বাভাবিকতা ঘটলে','发生与投入物料·外协加工品相关的异常时','ထည့်သွင်းပစ္စည်း·ပြင်ပလုပ်ကိုင်ပစ္စည်းနှင့်ဆိုင်သော ချို့ယွင်းချက်ဖြစ်ပါက');
+K('투입 자재 부족으로 라인 가동 불능일 때','Khi thiếu vật tư đầu vào khiến dây chuyền không thể vận hành','เมื่อวัสดุที่ป้อนไม่เพียงพอทำให้ไม่สามารถเดินไลน์ได้','ইনপুট উপকরণের ঘাটতিতে লাইন চালানো অসম্ভব হলে','因投入物料不足导致产线无法运转时','ထည့်သွင်းပစ္စည်းမလုံလောက်၍ လိုင်းမလည်ပတ်နိုင်ပါက');
+K('계획된 생산 완료 후 해당 투입 자재가 남을 때','Khi vật tư đầu vào còn dư sau khi hoàn thành sản xuất theo kế hoạch','เมื่อวัสดุที่ป้อนเหลือหลังผลิตตามแผนเสร็จสิ้น','পরিকল্পিত উৎপাদন শেষে সংশ্লিষ্ট ইনপুট উপকরণ বেঁচে গেলে','计划生产完成后该投入物料有剩余时','စီစဉ်ထားသော ထုတ်လုပ်မှုပြီးနောက် ထည့်သွင်းပစ္စည်း ကျန်ရှိပါက');
+K('미승인 투입 자재를 발견했을 때','Khi phát hiện vật tư đầu vào chưa được phê duyệt','เมื่อพบวัสดุที่ป้อนที่ไม่ได้รับอนุมัติ','অননুমোদিত ইনপুট উপকরণ পাওয়া গেলে','发现未经批准的投入物料时','အတည်မပြုထားသော ထည့်သွင်းပစ္စည်းကို တွေ့ရှိပါက');
+K('투입 자재 또는 임가공품이 규격에서 벗어난 경우','Khi vật tư đầu vào hoặc hàng gia công ngoài lệch khỏi quy cách','เมื่อวัสดุที่ป้อนหรืองานจ้างแปรรูปไม่เป็นไปตามข้อกำหนด','ইনপুট উপকরণ বা আউটসোর্স পণ্য স্পেসিফিকেশন থেকে বিচ্যুত হলে','投入物料或外协加工品超出规格时','ထည့်သွင်းပစ္စည်း သို့မဟုတ် ပြင်ပလုပ်ကိုင်ပစ္စည်း စံချိန်မကိုက်ပါက');
+K('검사 대상 품목이 미검사로 공정에 투입 시','Khi hạng mục cần kiểm tra được đưa vào công đoạn mà chưa kiểm tra','เมื่อรายการที่ต้องตรวจสอบถูกป้อนเข้ากระบวนการโดยไม่ผ่านการตรวจ','পরিদর্শনযোগ্য আইটেম পরিদর্শন ছাড়াই প্রক্রিয়ায় দেওয়া হলে','应检验品项未经检验即投入工序时','စစ်ဆေးရမည့်ပစ္စည်းကို မစစ်ဆေးဘဲ လုပ်ငန်းစဉ်သို့ ထည့်သွင်းပါက');
+K('공정 투입 자재 유실율이 10% 이상 발생 시','Khi tỷ lệ thất thoát vật tư đầu vào công đoạn <em>từ 10% trở lên</em>','เมื่ออัตราสูญหายของวัสดุที่ป้อนเข้ากระบวนการ <em>10% ขึ้นไป</em>','প্রক্রিয়ায় ইনপুট উপকরণের ক্ষতির হার <em>10% বা তার বেশি</em> হলে','工序投入物料损耗率达到<em>10% 以上</em>时','လုပ်ငန်းစဉ်သို့ ထည့်သွင်းသောပစ္စည်း ဆုံးရှုံးမှုနှုန်း <em>10% နှင့်အထက်</em> ဖြစ်ပါက');
+K('특성 및 외관상 치명 불량이 연속적 1개 이상 발견','Khi phát hiện liên tiếp <em>1 lỗi trở lên</em> nghiêm trọng về đặc tính và ngoại quan','เมื่อพบข้อบกพร่องร้ายแรงด้านคุณลักษณะและรูปลักษณ์ภายนอกต่อเนื่อง <em>1 ชิ้นขึ้นไป</em>','বৈশিষ্ট্য ও বাহ্যিক দিক থেকে মারাত্মক ত্রুটি পরপর <em>1টি বা তার বেশি</em> পাওয়া গেলে','连续发现特性及外观致命不良<em>1 个以上</em>时','အရည်အချင်းနှင့် အပြင်ပိုင်းအရ အသက်အန္တရာယ်ရှိသော ချို့ယွင်းချက် ဆက်တိုက် <em>1 ခု နှင့်အထက်</em> တွေ့ရှိပါက');
+K('원자재 및 임가공품의 동일 불량이 연속 또는 일정 간격으로 발생 시. (동일 불량 3회 연속)','Khi cùng một lỗi của nguyên liệu và hàng gia công ngoài xảy ra liên tục hoặc theo chu kỳ. (cùng một lỗi <em>3 lần liên tiếp</em>)','เมื่อเกิดข้อบกพร่องเดียวกันของวัตถุดิบและงานจ้างแปรรูปอย่างต่อเนื่องหรือเป็นช่วงๆ (ข้อบกพร่องเดียวกัน <em>3 ครั้งติดต่อกัน</em>)','কাঁচামাল ও আউটসোর্স পণ্যের একই ত্রুটি পরপর বা নির্দিষ্ট বিরতিতে ঘটলে। (একই ত্রুটি <em>টানা 3 বার</em>)','原材料及外协加工品的同一不良连续或按一定间隔发生时。（同一不良<em>连续 3 次</em>）','ကုန်ကြမ်းနှင့် ပြင်ပလုပ်ကိုင်ပစ္စည်း၏ တူညီသောချို့ယွင်းချက် ဆက်တိုက် သို့မဟုတ် အချိန်ကာလအလိုက် ဖြစ်ပေါ်ပါက။ (တူညီသောချို့ယွင်းချက် <em>ဆက်တိုက် 3 ကြိမ်</em>)');
+K('무검사 자재의 전수 불량일 경우','Khi vật tư không kiểm tra bị lỗi toàn bộ','เมื่อวัสดุที่ไม่ตรวจสอบมีข้อบกพร่องทั้งหมด','অপরীক্ষিত উপকরণ সম্পূর্ণ ত্রুটিপূর্ণ হলে','免检物料全数不良时','မစစ်ဆေးသော ပစ္စည်း အားလုံး ချို့ယွင်းပါက');
+K('* 자재 (OS&D)','* Vật tư (OS&D)','* วัสดุ (OS&D)','* উপকরণ (OS&D)','* 物料 (OS&D)','* ပစ္စည်း (OS&D)');
+K('1. 정량/정품','1. Đúng số lượng/hàng chính hãng','1. ปริมาณถูกต้อง/ของแท้','1. সঠিক পরিমাণ/আসল পণ্য','1. 数量准确/正品','1. အရေအတွက်မှန်/ပစ္စည်းအစစ်');
+K('2. 사양/규격','2. Thông số/Quy cách','2. ข้อกำหนด/มาตรฐาน','2. স্পেসিফিকেশন/মান','2. 规格/标准','2. သတ်မှတ်ချက်/စံချိန်');
+K('* 검사','* Kiểm tra','* การตรวจสอบ','* পরিদর্শন','* 检验','* စစ်ဆေးမှု');
+K('3. 수입검사 기준','3. Tiêu chuẩn kiểm tra nhập hàng','3. เกณฑ์การตรวจสอบรับเข้า','3. ইনকামিং পরিদর্শন মানদণ্ড','3. 来料检验标准','3. လက်ခံစစ်ဆေးမှု စံနှုန်း');
+K('4. 한도견본','4. Mẫu giới hạn','4. ตัวอย่างขีดจำกัด','4. সীমা নমুনা','4. 限度样品','4. ကန့်သတ်နမူနာ');
+K('방법','Phương pháp','วิธีการ','পদ্ধতি','方法','နည်းလမ်း');
+K('작업·검사 방법 관련 이상 발생 시','Khi xảy ra bất thường liên quan đến phương pháp làm việc · kiểm tra','เมื่อเกิดความผิดปกติเกี่ยวกับวิธีการทำงาน·ตรวจสอบ','কাজ·পরিদর্শন পদ্ধতি সংক্রান্ত অস্বাভাবিকতা ঘটলে','发生与作业·检验方法相关的异常时','လုပ်ငန်း·စစ်ဆေးမှုနည်းလမ်းနှင့်ဆိုင်သော ချို့ယွင်းချက်ဖြစ်ပါက');
+K('작업/검사 표준대로 작업이 시행되지 못할 시','Khi không thể thực hiện công việc theo tiêu chuẩn làm việc/kiểm tra','เมื่อไม่สามารถปฏิบัติงานตามมาตรฐานการทำงาน/ตรวจสอบได้','কাজ/পরিদর্শন মান অনুযায়ী কাজ করা না গেলে','无法按作业/检验标准作业时','လုပ်ငန်း/စစ်ဆေးမှုစံနှုန်းအတိုင်း မလုပ်ဆောင်နိုင်ပါက');
+K('작업/검사자가 표준 미준수로 제품 및 부품 품질에 영향을 미칠 경우','Khi người làm việc/kiểm tra không tuân thủ tiêu chuẩn, ảnh hưởng đến chất lượng sản phẩm và linh kiện','เมื่อผู้ปฏิบัติงาน/ผู้ตรวจสอบไม่ปฏิบัติตามมาตรฐานจนส่งผลต่อคุณภาพผลิตภัณฑ์และชิ้นส่วน','কর্মী/পরিদর্শক মান না মানায় পণ্য ও যন্ত্রাংশের মানে প্রভাব পড়লে','作业/检验人员未遵守标准而影响产品及零件品质时','လုပ်ဆောင်သူ/စစ်ဆေးသူ စံနှုန်းမလိုက်နာ၍ ထုတ်ကုန်နှင့် အစိတ်အပိုင်းအရည်အသွေးကို သက်ရောက်ပါက');
+K('관리항목 누락 및 미체크 사항 발견 시','Khi phát hiện thiếu hạng mục quản lý hoặc hạng mục chưa kiểm tra','เมื่อพบรายการควบคุมที่ตกหล่นหรือไม่ได้ตรวจสอบ','ব্যবস্থাপনা আইটেম বাদ পড়া ও অপরীক্ষিত বিষয় পাওয়া গেলে','发现管理项目遗漏及未检查事项时','စီမံခန့်ခွဲမှုအချက် ကျန်ခဲ့ခြင်း၊ မစစ်ဆေးထားခြင်း တွေ့ရှိပါက');
+K('4M 변경 사항에 대하여 미적용 상태로 일정 생산 및 검사 진행이 발견 되었을 시.','Khi phát hiện việc sản xuất và kiểm tra vẫn diễn ra một thời gian mà chưa áp dụng thay đổi 4M.','เมื่อพบว่ามีการผลิตและตรวจสอบมาระยะหนึ่งโดยไม่ได้นำการเปลี่ยนแปลง 4M มาใช้','4M পরিবর্তন প্রয়োগ না করেই নির্দিষ্ট সময় ধরে উৎপাদন ও পরিদর্শন চলছে পাওয়া গেলে।','发现未应用 4M 变更而持续进行一定时间的生产及检验时。','4M ပြောင်းလဲမှုကို မအသုံးပြုဘဲ အချိန်အတိုင်းအတာတစ်ခုအထိ ထုတ်လုပ်စစ်ဆေးနေသည်ကို တွေ့ရှိပါက။');
+K('* 표준','* Tiêu chuẩn','* มาตรฐาน','* মান','* 标准','* စံနှုန်း');
+K('1. 작업 공정 표준','1. Tiêu chuẩn công đoạn làm việc','1. มาตรฐานกระบวนการทำงาน','1. কাজের প্রক্রিয়া মান','1. 作业工序标准','1. လုပ်ငန်းစဉ်စံနှုန်း');
+K('2. 검사 공정 표준','2. Tiêu chuẩn công đoạn kiểm tra','2. มาตรฐานกระบวนการตรวจสอบ','2. পরিদর্শন প্রক্রিয়া মান','2. 检验工序标准','2. စစ်ဆေးမှုလုပ်ငန်းစဉ်စံနှုန်း');
+K('3. 중요 기본 작업 지침(납땜,압착,나사 체결)','3. Hướng dẫn công việc cơ bản quan trọng (hàn, ép đầu cos, siết vít)','3. แนวปฏิบัติงานพื้นฐานสำคัญ (บัดกรี, ย้ำ, ขันสกรู)','3. গুরুত্বপূর্ণ মৌলিক কাজের নির্দেশিকা (সোল্ডারিং, ক্রিম্পিং, স্ক্রু বাঁধা)','3. 重要基本作业指南（焊接、压接、螺丝紧固）','3. အရေးကြီးသော အခြေခံလုပ်ငန်းလမ်းညွှန် (ဂဟေဆော်၊ ဖိကပ်၊ ဝက်အူချ)');
+K('4. 식별 및 이력관리 기준','4. Tiêu chuẩn nhận dạng và quản lý lịch sử','4. เกณฑ์การระบุและการจัดการประวัติ','4. শনাক্তকরণ ও ইতিহাস ব্যবস্থাপনা মানদণ্ড','4. 识别及履历管理标准','4. သတ်မှတ်ခြင်းနှင့် မှတ်တမ်းစီမံခန့်ခွဲမှု စံနှုန်း');
+K('4. 식별 및 이력 관리 기준','4. Tiêu chuẩn nhận dạng và quản lý lịch sử','4. เกณฑ์การระบุและการจัดการประวัติ','4. শনাক্তকরণ ও ইতিহাস ব্যবস্থাপনা মানদণ্ড','4. 识别及履历管理标准','4. သတ်မှတ်ခြင်းနှင့် မှတ်တမ်းစီမံခန့်ခွဲမှု စံနှုန်း');
+K('설비','Thiết bị','เครื่องจักร','যন্ত্রপাতি','设备','စက်ပစ္စည်း');
+K('설비·계측기 관련 이상 발생 시','Khi xảy ra bất thường liên quan đến thiết bị · dụng cụ đo','เมื่อเกิดความผิดปกติเกี่ยวกับเครื่องจักร·เครื่องมือวัด','যন্ত্রপাতি·পরিমাপক যন্ত্র সংক্রান্ত অস্বাভাবিকতা ঘটলে','发生与设备·计量器具相关的异常时','စက်ပစ္စည်း·တိုင်းတာကိရိယာနှင့်ဆိုင်သော ချို့ယွင်းချက်ဖြစ်ပါက');
+K('설비 Trouble 다발로 공정에 과다 재공 발생 시','Khi sự cố thiết bị xảy ra nhiều khiến công đoạn tồn đọng bán thành phẩm quá mức','เมื่อเครื่องจักรขัดข้องบ่อยจนเกิดงานระหว่างทำ (WIP) ในกระบวนการมากเกินไป','যন্ত্রপাতির সমস্যা বারবার ঘটে প্রক্রিয়ায় অতিরিক্ত WIP জমে গেলে','设备故障频发导致工序在制品过多时','စက်ပစ္စည်း ပြဿနာ မကြာခဏဖြစ်၍ လုပ်ငန်းစဉ်တွင် လုပ်ဆဲပစ္စည်း များလွန်းပါက');
+K('해당 설비/계측기가 파손되었을 때.','Khi thiết bị/dụng cụ đo tương ứng bị hư hỏng.','เมื่อเครื่องจักร/เครื่องมือวัดดังกล่าวเสียหาย','সংশ্লিষ্ট যন্ত্রপাতি/পরিমাপক যন্ত্র ক্ষতিগ্রস্ত হলে।','该设备/计量器具损坏时。','သက်ဆိုင်ရာ စက်ပစ္စည်း/တိုင်းတာကိရိယာ ပျက်စီးပါက။');
+K('해당 설비 계측기가 Setting 불가 시','Khi thiết bị/dụng cụ đo tương ứng không thể Setting','เมื่อไม่สามารถตั้งค่า (Setting) เครื่องจักร/เครื่องมือวัดได้','সংশ্লিষ্ট যন্ত্র/পরিমাপক যন্ত্র Setting করা না গেলে','该设备/计量器具无法设定（Setting）时','သက်ဆိုင်ရာ စက်ပစ္စည်း/တိုင်းတာကိရိယာ Setting မလုပ်နိုင်ပါက');
+K('해당 설비/계측기의 점검(검정)주기가 지났을 시','Khi đã quá chu kỳ kiểm tra (hiệu chuẩn) của thiết bị/dụng cụ đo','เมื่อเลยรอบการตรวจเช็ก (สอบเทียบ) ของเครื่องจักร/เครื่องมือวัด','সংশ্লিষ্ট যন্ত্র/পরিমাপক যন্ত্রের পরিদর্শন (ক্যালিব্রেশন) চক্র অতিক্রম করলে','该设备/计量器具超过点检（校准）周期时','သက်ဆိုင်ရာ စက်ပစ္စည်း/တိုင်းတာကိရိယာ၏ စစ်ဆေး (ချိန်ညှိ) ကာလ ကျော်လွန်ပါက');
+K('* 관리 기준','* Tiêu chuẩn quản lý','* เกณฑ์การควบคุม','* ব্যবস্থাপনা মানদণ্ড','* 管理标准','* စီမံခန့်ခွဲမှုစံနှုန်း');
+K('1. 설비 규격','1. Quy cách thiết bị','1. ข้อกำหนดเครื่องจักร','1. যন্ত্রপাতির স্পেসিফিকেশন','1. 设备规格','1. စက်ပစ္စည်း သတ်မှတ်ချက်');
+K('2. 설비 점검/관리 기준','2. Tiêu chuẩn kiểm tra/quản lý thiết bị','2. เกณฑ์การตรวจเช็ก/ควบคุมเครื่องจักร','2. যন্ত্রপাতি পরিদর্শন/ব্যবস্থাপনা মানদণ্ড','2. 设备点检/管理标准','2. စက်ပစ္စည်း စစ်ဆေး/စီမံခန့်ခွဲမှု စံနှုန်း');
+K('3. 계측기 점검 관리 기준','3. Tiêu chuẩn kiểm tra/quản lý dụng cụ đo','3. เกณฑ์การตรวจเช็ก/ควบคุมเครื่องมือวัด','3. পরিমাপক যন্ত্র পরিদর্শন/ব্যবস্থাপনা মানদণ্ড','3. 计量器具点检管理标准','3. တိုင်းတာကိရိယာ စစ်ဆေး/စီမံခန့်ခွဲမှု စံနှုန်း');
+K('환경','Môi trường','สภาพแวดล้อม','পরিবেশ','环境','ပတ်ဝန်းကျင်');
+K('작업 환경 관련 이상 발생 시','Khi xảy ra bất thường liên quan đến môi trường làm việc','เมื่อเกิดความผิดปกติเกี่ยวกับสภาพแวดล้อมการทำงาน','কাজের পরিবেশ সংক্রান্ত অস্বাভাবিকতা ঘটলে','发生与作业环境相关的异常时','လုပ်ငန်းခွင်ပတ်ဝန်းကျင်နှင့်ဆိုင်သော ချို့ယွင်းချက်ဖြစ်ပါက');
+K('정전기 방지 대책없이 라인 가동 발견 시','Khi phát hiện vận hành dây chuyền mà không có biện pháp chống tĩnh điện','เมื่อพบว่าเดินไลน์โดยไม่มีมาตรการป้องกันไฟฟ้าสถิต','স্ট্যাটিক বিদ্যুৎ প্রতিরোধ ব্যবস্থা ছাড়া লাইন চালু পাওয়া গেলে','发现无防静电措施即运转产线时','ငြိမ်လျှပ်စစ်ကာကွယ်မှုမရှိဘဲ လိုင်းလည်ပတ်နေသည်ကို တွေ့ရှိပါက');
+K('토크 관리 미준수 상태에 라인 가동 발견 시','Khi phát hiện vận hành dây chuyền trong tình trạng không tuân thủ quản lý lực siết (torque)','เมื่อพบว่าเดินไลน์โดยไม่ปฏิบัติตามการควบคุมแรงบิด (Torque)','টর্ক ব্যবস্থাপনা না মেনে লাইন চালু পাওয়া গেলে','发现未遵守扭矩管理即运转产线时','Torque စီမံခန့်ခွဲမှု မလိုက်နာဘဲ လိုင်းလည်ပတ်နေသည်ကို တွေ့ရှိပါက');
+K('작업 환경의 5S 상태가 품질에 악영향을 미칠 것으로 판단될 때.','Khi nhận định tình trạng 5S của môi trường làm việc có thể ảnh hưởng xấu đến chất lượng.','เมื่อประเมินว่าสภาพ 5S ของสภาพแวดล้อมการทำงานจะส่งผลเสียต่อคุณภาพ','কাজের পরিবেশের 5S অবস্থা মানের উপর খারাপ প্রভাব ফেলবে বলে মনে হলে।','判断作业环境 5S 状态会对品质造成不良影响时。','လုပ်ငန်းခွင် 5S အခြေအနေက အရည်အသွေးကို ဆိုးကျိုးသက်ရောက်မည်ဟု ယူဆပါက။');
+K('* 작업 환경','* Môi trường làm việc','* สภาพแวดล้อมการทำงาน','* কাজের পরিবেশ','* 作业环境','* လုပ်ငန်းခွင်ပတ်ဝန်းကျင်');
+K('1. 정전기 관리 지침','1. Hướng dẫn quản lý tĩnh điện','1. แนวปฏิบัติการควบคุมไฟฟ้าสถิต','1. স্ট্যাটিক বিদ্যুৎ ব্যবস্থাপনা নির্দেশিকা','1. 静电管理指南','1. ငြိမ်လျှပ်စစ် စီမံခန့်ခွဲမှု လမ်းညွှန်');
+K('2. 토크 관리 지침','2. Hướng dẫn quản lý lực siết (torque)','2. แนวปฏิบัติการควบคุมแรงบิด','2. টর্ক ব্যবস্থাপনা নির্দেশিকা','2. 扭矩管理指南','2. Torque စီမံခန့်ခွဲမှု လမ်းညွှန်');
+K('3. 3정 5S','3. 3 Định 5S','3. 3 กำหนด 5ส','3. 3 নির্ধারণ 5S','3. 三定 5S','3. သတ်မှတ်ချက် ၃ ခု 5S');
+K('제품 결과 특성 · 고객 관점 이상 발생 시','Khi xảy ra bất thường về đặc tính kết quả sản phẩm · góc nhìn khách hàng','เมื่อเกิดความผิดปกติด้านคุณลักษณะผลลัพธ์ของผลิตภัณฑ์ · มุมมองลูกค้า','পণ্যের ফলাফল বৈশিষ্ট্য · গ্রাহকের দৃষ্টিকোণ থেকে অস্বাভাবিকতা ঘটলে','发生产品结果特性 · 客户视角的异常时','ထုတ်ကုန်ရလဒ်လက္ခဏာ · ဖောက်သည်ရှုထောင့်မှ ချို့ယွင်းချက်ဖြစ်ပါက');
+K('제품의 기본 Spec에서 벗어났을 경우','Khi lệch khỏi Spec cơ bản của sản phẩm','เมื่อเบี่ยงเบนจากสเปกพื้นฐานของผลิตภัณฑ์','পণ্যের মৌলিক Spec থেকে বিচ্যুত হলে','偏离产品基本规格（Spec）时','ထုတ်ကုန်၏ အခြေခံ Spec မှ ကွဲလွဲပါက');
+K('출하 검사 시 과거 불량이 1회 이상 발생 시','Khi lỗi trong quá khứ tái diễn <em>từ 1 lần trở lên</em> trong kiểm tra xuất hàng','เมื่อพบข้อบกพร่องที่เคยเกิดในอดีต <em>1 ครั้งขึ้นไป</em> ระหว่างตรวจสอบก่อนส่งออก','শিপমেন্ট পরিদর্শনে অতীতের ত্রুটি <em>1 বার বা তার বেশি</em> ঘটলে','出货检验时过去的不良发生<em>1 次以上</em>时','ပို့ဆောင်မှုစစ်ဆေးရာတွင် အတိတ်ချို့ယွင်းချက် <em>1 ကြိမ်နှင့်အထက်</em> ဖြစ်ပါက');
+K('치명 불량 요건 발견 및 불량 발생 시','Khi phát hiện yếu tố lỗi nghiêm trọng hoặc phát sinh lỗi','เมื่อพบเงื่อนไขข้อบกพร่องร้ายแรงและเกิดข้อบกพร่อง','মারাত্মক ত্রুটির শর্ত পাওয়া গেলে ও ত্রুটি ঘটলে','发现致命不良要件及发生不良时','အသက်အန္တရာယ်ရှိသော ချို့ယွင်းချက်အခြေအနေ တွေ့ရှိ၍ ချို့ယွင်းချက်ဖြစ်ပေါ်ပါက');
+K('제품 기본 Spec이외의 별도 고객 요구 조건에 대한 미적용 시.','Khi không áp dụng điều kiện yêu cầu riêng của khách hàng ngoài Spec cơ bản của sản phẩm.','เมื่อไม่ได้นำเงื่อนไขที่ลูกค้าต้องการเพิ่มเติมนอกเหนือจากสเปกพื้นฐานมาใช้','পণ্যের মৌলিক Spec ছাড়া গ্রাহকের পৃথক চাহিদা প্রয়োগ না করা হলে।','未应用产品基本规格以外的客户额外要求条件时。','ထုတ်ကုန်အခြေခံ Spec အပြင် ဖောက်သည်၏ သီးခြားလိုအပ်ချက်များကို မအသုံးပြုပါက။');
+K('기 출하품에 대한 고객 불만 발생 시 내부 재고 및 재공 확인이 불가피할 경우','Khi có khiếu nại của khách hàng về hàng đã xuất và buộc phải kiểm tra tồn kho và bán thành phẩm nội bộ','เมื่อมีข้อร้องเรียนจากลูกค้าเกี่ยวกับสินค้าที่ส่งออกไปแล้ว และจำเป็นต้องตรวจสอบสต็อกและงานระหว่างทำภายใน','ইতিমধ্যে সরবরাহকৃত পণ্য নিয়ে গ্রাহকের অভিযোগ হলে অভ্যন্তরীণ মজুত ও WIP যাচাই অনিবার্য হলে','已出货产品发生客户投诉，须确认内部库存及在制品时','ပို့ပြီးသားထုတ်ကုန်အပေါ် ဖောက်သည်တိုင်ကြားမှုရှိ၍ ပြည်တွင်းလက်ကျန်နှင့် လုပ်ဆဲပစ္စည်းကို စစ်ဆေးရန် မလွဲမသွေလိုပါက');
+K('* 제품 규격/표준/고객 만족','* Quy cách/tiêu chuẩn sản phẩm/sự hài lòng của khách hàng','* ข้อกำหนด/มาตรฐานผลิตภัณฑ์/ความพึงพอใจของลูกค้า','* পণ্যের স্পেসিফিকেশন/মান/গ্রাহক সন্তুষ্টি','* 产品规格/标准/客户满意','* ထုတ်ကုန်သတ်မှတ်ချက်/စံနှုန်း/ဖောက်သည်စိတ်ကျေနပ်မှု');
+K('1. 출하 검사 기준/규격','1. Tiêu chuẩn/quy cách kiểm tra xuất hàng','1. เกณฑ์/ข้อกำหนดการตรวจสอบก่อนส่งออก','1. শিপমেন্ট পরিদর্শন মানদণ্ড/স্পেসিফিকেশন','1. 出货检验标准/规格','1. ပို့ဆောင်မှုစစ်ဆေးရေး စံနှုန်း/သတ်မှတ်ချက်');
+K('2. 제품 Spec/규격','2. Spec/quy cách sản phẩm','2. สเปก/ข้อกำหนดผลิตภัณฑ์','2. পণ্যের Spec/স্পেসিফিকেশন','2. 产品规格（Spec）','2. ထုတ်ကုန် Spec/သတ်မှတ်ချက်');
+K('3. 고객/제품/법적 요구 조건','3. Yêu cầu của khách hàng/sản phẩm/pháp luật','3. ข้อกำหนดของลูกค้า/ผลิตภัณฑ์/กฎหมาย','3. গ্রাহক/পণ্য/আইনি চাহিদা','3. 客户/产品/法规要求','3. ဖောက်သည်/ထုတ်ကုန်/ဥပဒေ လိုအပ်ချက်များ');
+K('5. VOC 발생 대책 보고서','5. Báo cáo đối sách khi phát sinh VOC','5. รายงานมาตรการเมื่อเกิด VOC','5. VOC ঘটলে প্রতিকার প্রতিবেদন','5. VOC 发生对策报告','5. VOC ဖြစ်ပေါ်ပါက ဖြေရှင်းချက် အစီရင်ခံစာ');
+const SLOGAN={
+ vi:'<span class="a"><em>Công nhân</em></span> hãy dừng Line, <span class="b"><em>quản lý</em></span> đừng dừng Line.<span class="ar">→</span>Nhưng <span class="b"><em>quản lý</em></span> tuyệt đối đừng để Line bị dừng.',
+ th:'<span class="a"><em>พนักงาน</em></span> จงหยุดไลน์ <span class="b"><em>ผู้บริหาร</em></span> อย่าหยุดไลน์<span class="ar">→</span>แต่ <span class="b"><em>ผู้บริหาร</em></span> ห้ามทำให้ไลน์หยุดเด็ดขาด',
+ bn:'<span class="a"><em>অপারেটর</em></span> লাইন থামান, <span class="b"><em>ম্যানেজার</em></span> লাইন থামাবেন না।<span class="ar">→</span>কিন্তু <span class="b"><em>ম্যানেজার</em></span> কখনোই লাইন থামাতে দেবেন না।',
+ zh:'<span class="a"><em>作业员</em></span>要停线，<span class="b"><em>管理者</em></span>不要停线。<span class="ar">→</span>但<span class="b"><em>管理者</em></span>绝不能让产线停下。',
+ my:'<span class="a"><em>အလုပ်သမား</em></span> လိုင်းကို ရပ်ပါ၊ <span class="b"><em>မန်နေဂျာ</em></span> လိုင်းကို မရပ်ပါနှင့်။<span class="ar">→</span>သို့သော် <span class="b"><em>မန်နေဂျာ</em></span> သည် လိုင်းကို ဘယ်တော့မှ မရပ်စေပါနှင့်။'
+};
+
+window.__hooks=[]; let LANG='ko'; const LI={vi:0,th:1,bn:2,zh:3,my:4};
+function getLang(){return LANG}
+function tr(s,v){ let r=s; if(LANG!=='ko'){ const a=TR[s]; if(a&&a[LI[LANG]]) r=a[LI[LANG]]; } if(v) r=r.replace(/\{(\w+)\}/g,(m,k)=>v[k]!==undefined?v[k]:m); return r; }
+function xlate(){
+  const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:n=>{const p=n.parentNode&&n.parentNode.nodeName;return(p==='SCRIPT'||p==='STYLE')?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT}}); let n;
+  while(n=w.nextNode()){
+    if(n.__ko===undefined){ const k=n.nodeValue.trim(); if(k&&TR[k]) n.__ko=n.nodeValue; else continue; }
+    const k=n.__ko.trim(); n.nodeValue=LANG==='ko'?n.__ko:n.__ko.replace(k,()=>tr(k));
+  }
+}
+function setLang(l){
+  if(!(l==='ko'||l in LI)) l='ko'; LANG=l; document.documentElement.lang=l; document.body.dataset.lang=l; xlate();
+  const sl=document.getElementById('slogan'); if(sl){ if(sl.__ko===undefined) sl.__ko=sl.innerHTML; sl.innerHTML=l==='ko'?sl.__ko:SLOGAN[l]; }
+  document.querySelectorAll('.lgb').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===l));
+  window.__hooks.forEach(f=>{try{f()}catch(e){console.error(e)}});
+  try{localStorage.setItem('lsLang',l)}catch(e){}
+}
+document.querySelectorAll('.lgb').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+
+/* ================= header / page switching ================= */
+(function(){
+  const hd=document.getElementById('hd'),pg=document.getElementById('progress');
+  const links=[...document.querySelectorAll('#gnb a')],bar=document.getElementById('gbar');
+  const secs=links.map(a=>a.dataset.sec);
+  function moveBar(a){ if(!a){bar.style.opacity=0;return} bar.style.opacity=1; bar.style.left=a.offsetLeft+'px'; bar.style.width=a.offsetWidth+'px'; }
+  function onScroll(){
+    const y=window.scrollY, h=document.documentElement.scrollHeight-innerHeight;
+    pg.style.width=(h>0?y/h*100:0)+'%'; hd.classList.toggle('fixed',y>40);
+  }
+  addEventListener('scroll',onScroll,{passive:true});
+  let curId=null;
+  function show(id,first){
+    if(!secs.includes(id)) id=secs[0];
+    if(id===curId) return; const prev=curId; curId=id;
+    secs.forEach(sid=>{ const el=document.getElementById(sid); if(sid===id){el.hidden=false} else el.hidden=true; });
+    links.forEach(a=>{ if(a.dataset.sec===id) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
+    moveBar(links.find(a=>a.dataset.sec===id));
+    try{ history.replaceState(null,'','#'+id) }catch(e){}
+    if(!first){ const t=document.getElementById(id); window.scrollTo({top:t.offsetTop-(innerWidth<768?45:10),behavior:'smooth'}); }
+    document.querySelectorAll('#'+id+' .rv').forEach(el=>el.classList.add('in'));
+    window.dispatchEvent(new CustomEvent('pagechange',{detail:{id,prev}})); onScroll();
+  }
+  links.forEach(a=>{ a.addEventListener('click',e=>{e.preventDefault();show(a.dataset.sec)}); a.addEventListener('keydown',e=>{if(e.key===' '){e.preventDefault();show(a.dataset.sec)}}); });
+  addEventListener('resize',()=>moveBar(links.find(a=>a.dataset.sec===curId)));
+  window.__hooks.push(()=>moveBar(links.find(a=>a.dataset.sec===curId)));
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+  document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3)*90+'ms';io.observe(el)});
+  setTimeout(()=>show((location.hash||'').slice(1),true),0);
+})();
+
+/* ================= FLOW ================= */
+(function(){
+  const NS='http://www.w3.org/2000/svg', svg=document.getElementById('flow');
+  const N={
+    start:[20,20,150,44,'입고/생산/검사','','n'],
+    defect:[20,110,150,44,'불량(OS&D) 발생','','alert'],
+    r1:[20,215,150,44,'작업長 보고','','report'],
+    r2:[20,305,150,44,'팀장 보고','','report'],
+    r3:[20,395,150,44,'공장장 보고','','report'],
+    r4:[20,485,150,44,'대표이사 보고','','report'],
+    chk:[240,110,150,44,'이상 확인','3현/3즉에 의한 확인','n'],
+    lead:[240,200,150,60,'작업長 검토','시료성 / Lot성 구분','review'],
+    sample:[240,330,150,44,'시료 불량 처리','','n'],
+    perf:[240,440,150,44,'실적관리/피드백','','n'],
+    action:[240,550,150,44,'조치 / 대책 수립','','n'],
+    mgr:[580,200,160,70,'팀장 검토','Line Stop 여부 판단','review'],
+    ls:[580,320,160,48,'Line Stop','','stop'],
+    temp:[580,410,160,44,'임시 대책/조치','','n'],
+    fa1:[580,500,160,60,'공장장 승인','','review'],
+    root:[580,630,160,48,'근본 대책 수립','','n'],
+    end:[580,740,160,44,'공정 정상 복귀','','end'],
+    fa2:[820,500,160,60,'공장장 승인','','review']
+  };
+  const E={
+    e_c01:['M95,64 V110'],
+    e_def_chk:['M170,132 H240'],
+    e_def_r1:['M95,154 V215','',null,1],
+    e_r1_r2:['M95,259 V305','',null,1],
+    e_r2_r3:['M95,349 V395','',null,1],
+    e_r3_r4:['M95,439 V485','',null,1],
+    e_chk_lead:['M315,154 V200'],
+    e_lead_mgr:['M390,222 H580','Lot성 · 작업長 조치 불가',[485,222]],
+    e_lead_sample:['M315,260 V330','시료성 · 조치 가능',[315,295]],
+    e_sample_perf:['M315,374 V440'],
+    e_perf_action:['M315,484 V550'],
+    e_action_mgr:['M315,594 V618 H556 V254 H580'],
+    e_mgr_ls:['M660,270 V320','Yes',[660,295]],
+    e_mgr_fa2:['M740,235 H900 V500','No',[820,235]],
+    e_ls_temp:['M660,368 V410'],
+    e_temp_fa1:['M660,454 V500'],
+    e_fa1_temp:['M740,530 H775 V432 H740','No · 재조치',[775,481]],
+    e_fa1_root:['M660,560 V630','Yes',[660,595]],
+    e_fa2_root:['M900,560 V654 H740','Yes',[900,610]],
+    e_fa2_mgr:['M980,530 H1030 V165 H660 V200','No · 재검토',[1030,350]],
+    e_root_end:['M660,678 V740']
+  };
+  const DESC={
+    start:['입고/생산/검사','입고 · 생산 · 검사 공정이 진행됩니다.'],
+    defect:['불량(OS&D) 발생','입고 / 공정 이상이 발생합니다. 보고 체계가 시작됩니다.'],
+    chk:['이상 확인','3현/3즉에 의한 확인을 실시합니다.'],
+    lead:['작업長 검토','불량 유형이 시료성이면 작업長 조치 가능, Lot성이면 작업長 조치 불가로 팀장 검토로 넘어갑니다.'],
+    sample:['시료 불량 처리','OS&D 식별 스티커 부착 → 부적합 Tag → 부적합 지정 장소로 이동'],
+    perf:['실적관리 / 피드백','OS&D 분석/개선 현황표 작성, 관련부서 피드백'],
+    action:['조치 / 대책 수립','자체 및 관련부서 대책 수립/합의, 4M 유지/개선 대책서'],
+    mgr:['팀장 검토','Line Stop 여부를 판단합니다. Yes → Line Stop / No → 공장장 승인'],
+    ls:['Line Stop','라인을 정지합니다.'],
+    temp:['임시 대책 / 조치','임시 대책과 조치를 시행합니다.'],
+    fa1:['공장장 승인','Yes → 근본 대책 수립 / No → 임시 대책/조치 재시행'],
+    fa2:['공장장 승인','Yes → 근본 대책 수립 / No → 팀장 재검토'],
+    root:['근본 대책 수립','재발방지 대책 — 발견부서 · 관련부서, 4M 유지/개선 대책서'],
+    end:['공정 정상 복귀','처리가 완료되어 공정이 정상으로 복귀합니다.']
+  };
+  const REPORT={lead:'r1',mgr:'r2',fa1:'r3',fa2:'r3',root:'r4'};
+  const CHAIN_EDGE={r1:'e_def_r1',r2:'e_r1_r2',r3:'e_r2_r3',r4:'e_r3_r4'};
+
+  const mk=(n,a={},p=svg)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e};
+  const defs=mk('defs');
+  const arrow=(id,c)=>'<marker id="'+id+'" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="'+c+'"/></marker>';
+  defs.innerHTML=arrow('ar','#999')+arrow('art','#007FA8')+arrow('arc','#9CCBDB');
+  const gE=mk('g'), gN=mk('g'), gL=mk('g'), gT=mk('g');
+  const edgeEl={};
+  for(const id in E){
+    const [d,lab,pos,chain]=E[id];
+    const base=mk('path',{d,class:'base','marker-end':'url(#ar)'},gE);
+    const idle=mk('path',{d,class:'idle'},gE);
+    const tr=mk('path',{d,class:'trace'+(chain?' static':''),'marker-end':'url(#art)',visibility:'hidden'},gE);
+    const len=base.getTotalLength(); tr.style.strokeDasharray=len; tr.style.strokeDashoffset=len;
+    let lg=null;
+    if(lab){ lg=mk('g',{class:'elabel'},gL); const t=mk('text',{x:pos[0],y:pos[1],'text-anchor':'middle','dominant-baseline':'central'},lg); t.textContent=lab;
+      const w=lab.length*(/[가-힣]/.test(lab)?10.5:6.5)+14; mk('rect',{x:pos[0]-w/2,y:pos[1]-9,width:w,height:18},lg); lg.insertBefore(lg.lastChild,t); }
+    edgeEl[id]={base,idle,tr,len,lg,chain:!!chain};
+  }
+  const nodeEl={};
+  for(const id in N){
+    const [x,y,w,h,lb,sb,tp]=N[id];
+    const g=mk('g',{class:'node t-'+tp,id:'n-'+id,tabindex:0,role:'button','aria-label':lb},gN);
+    mk('rect',{class:'ring',x:x-4,y:y-4,width:w+8,height:h+8},g);
+    mk('rect',{class:'bx',x,y,width:w,height:h},g);
+    const t=mk('text',{class:'lb',x:x+w/2,y:y+(sb?h/2-7:h/2),'text-anchor':'middle','dominant-baseline':'central'},g); t.textContent=lb;
+    if(sb){const s=mk('text',{class:'sb',x:x+w/2,y:y+h/2+11,'text-anchor':'middle','dominant-baseline':'central'},g); s.textContent=sb;}
+    nodeEl[id]=g;
+  }
+  const NB=[
+    {x:404,y:346,lines:['OS&D 식별 스티커','부적합 Tag','부적합 지정 장소 이동'],cls:'note',anchor:'start',maxW:160},
+    {x:404,y:456,lines:['OS&D 분석/개선 현황표','관련부서 피드백'],cls:'note',anchor:'start',maxW:160},
+    {x:404,y:560,lines:['자체 및 관련부서','대책 수립/합의','4M 유지/개선 대책서'],cls:'note',anchor:'start',maxW:160},
+    {x:566,y:650,lines:['재발방지 대책'],cls:'note red',anchor:'end',maxW:330},
+    {x:566,y:666,lines:['발견부서 · 관련부서','4M 유지/개선 대책서'],cls:'note',anchor:'end',maxW:330},
+    {x:108,y:186,lines:['보고 체계'],cls:'cap',anchor:'start',maxW:125},
+    {x:95,y:572,lines:['▲ 상위 보고'],cls:'cap',anchor:'middle',maxW:150}];
+  const pe=mk('text',{x:315,y:24,class:'cap','text-anchor':'middle'},gN); pe.textContent='Process';
+  const noteEls=[];
+  function wrapText(str,maxW,cls){
+    const m=mk('text',{class:cls,x:0,y:-60},gN); m.style.visibility='hidden';
+    const meas=q=>{m.textContent=q;return m.getComputedTextLength()};
+    let out=[str];
+    try{ if(meas(str)>maxW){
+      const lc=getLang(); let toks;
+      if(window.Intl&&Intl.Segmenter&&lc!=='ko') toks=[...new Intl.Segmenter(lc,{granularity:'word'}).segment(str)].map(x=>x.segment); else toks=str.split(/(?<=\s)/);
+      out=[]; let line='';
+      toks.forEach(tk=>{ const test=line+tk; if(line&&meas(test.trimEnd())>maxW){ out.push(line.trimEnd()); line=tk.replace(/^\s+/,''); } else line=test; });
+      if(line) out.push(line.trimEnd());
+    } }catch(e){}
+    m.remove(); return out;
+  }
+  function layoutNotes(){
+    noteEls.splice(0).forEach(e=>e.remove());
+    NB.forEach(b=>{ let y=b.y; b.lines.forEach(l=>{ wrapText(tr(l),b.maxW,b.cls).forEach(q=>{ const e=mk('text',{x:b.x,y,class:b.cls,'text-anchor':b.anchor},gN); e.textContent=q; noteEls.push(e); y+=b.cls==='note red'?16:14.5; }); }); });
+  }
+  function fitText(){
+    for(const id in nodeEl){ const w=N[id][2]; nodeEl[id].querySelectorAll('text.lb,text.sb').forEach(el=>{
+      el.removeAttribute('textLength'); el.removeAttribute('lengthAdjust'); el.style.fontSize='';
+      const L=el.getComputedTextLength(); if(!L) return; const max=w-12; if(L<=max) return;
+      const base=parseFloat(getComputedStyle(el).fontSize)||14, sc=max/L;
+      if(sc>=.78) el.style.fontSize=(base*sc).toFixed(2)+'px'; else { el.style.fontSize=(base*.8).toFixed(2)+'px'; const L2=el.getComputedTextLength(); if(L2>max){ el.setAttribute('textLength',max); el.setAttribute('lengthAdjust','spacingAndGlyphs'); } }
+    }); }
+    for(const id in edgeEl){ const o=edgeEl[id]; if(!o.lg) continue; const tx=o.lg.querySelector('text'), rc=o.lg.querySelector('rect'); const bb=tx.getBBox(); if(!bb.width) continue; rc.setAttribute('x',bb.x-7); rc.setAttribute('width',bb.width+14); rc.setAttribute('y',bb.y-2); rc.setAttribute('height',bb.height+4); }
+  }
+  const token=mk('circle',{id:'token',r:5},gT);
+
+  /* ---------- 모든 경우의 수 (2 × 2 × 2 = 8) ---------- */
+  const S={
+    prefix:[{n:'start'},{n:'defect',e:'e_c01'},{n:'chk',e:'e_def_chk'},{n:'lead',e:'e_chk_lead'}],
+    sample:[{n:'sample',e:'e_lead_sample'},{n:'perf',e:'e_sample_perf'},{n:'action',e:'e_perf_action'},{n:'mgr',e:'e_action_mgr'}],
+    lot:[{n:'mgr',e:'e_lead_mgr'}],
+    yes:[{n:'ls',e:'e_mgr_ls'},{n:'temp',e:'e_ls_temp'},{n:'fa1',e:'e_temp_fa1'}],
+    yesRej:[{n:'temp',e:'e_fa1_temp',d:['임시 대책 / 조치 (재시행)','공장장 반려(No) → 임시 대책/조치로 되돌아가 다시 시행합니다.']},{n:'fa1',e:'e_temp_fa1',d:['공장장 승인 (재승인)','재시행한 조치를 공장장이 다시 승인 검토합니다.']}],
+    yesEnd:[{n:'root',e:'e_fa1_root'},{n:'end',e:'e_root_end'}],
+    no:[{n:'fa2',e:'e_mgr_fa2'}],
+    noRej:[{n:'mgr',e:'e_fa2_mgr',d:['팀장 재검토','공장장 반려(No) → 팀장 검토로 되돌아가 다시 검토합니다.']},{n:'fa2',e:'e_mgr_fa2',d:['공장장 승인 (재승인)','재검토한 결과를 공장장이 다시 승인 검토합니다.']}],
+    noEnd:[{n:'root',e:'e_fa2_root'},{n:'end',e:'e_root_end'}]
+  };
+  const CASES=[];
+  for(const br of ['sample','lot']) for(const stop of ['no','yes']) for(const ok of ['yes','no']){
+    const seg=[...(br==='sample'?S.sample:S.lot)];
+    if(stop==='yes'){ seg.push(...S.yes); if(ok==='no') seg.push(...S.yesRej); seg.push(...S.yesEnd); }
+    else { seg.push(...S.no); if(ok==='no') seg.push(...S.noRej); seg.push(...S.noEnd); }
+    CASES.push({tags:[br==='sample'?'시료성':'Lot성', stop==='yes'?'Line Stop':'Line Stop 불필요', ok==='yes'?'공장장 승인':'공장장 반려 후 재처리'],seg});
+  }
+  let steps=[];
+  CASES.forEach((c,ci)=>{
+    if(ci===0){ S.prefix.forEach(s=>steps.push({...s,c:ci})); }
+    else steps.push({n:'lead',c:ci,jump:true,dk:['경우 {n} 시작 — 작업長 검토','같은 이상 건이 다른 경우로 처리될 때의 흐름입니다. ({tags})']});
+    c.seg.forEach(s=>steps.push({...s,c:ci}));
+    c.first=steps.findIndex(s=>s.c===ci); c.last=steps.length-1;
+  });
+  const ol=document.getElementById('cases'); const seen=new Set();
+  const tagsStr=ci=>CASES[ci].tags.map(x=>tr(x)).join(' → ');
+  function descOf(st){ if(st.dk) return [tr(st.dk[0],{n:st.c+1}),tr(st.dk[1],{tags:tagsStr(st.c)})]; const d=st.d||DESC[st.n]; return [tr(d[0]),tr(d[1])]; }
+  function caseLabel(ci){ return tr('경우 {n} / {t}',{n:ci+1,t:CASES.length})+' · '+tagsStr(ci); }
+  function buildTracker(){ ol.innerHTML=''; CASES.forEach((c,i)=>{ const li=document.createElement('li'); li.className='case'; li.tabIndex=0; li.setAttribute('role','button');
+    li.innerHTML='<b>'+tr('경우 {n}',{n:i+1})+'</b><div class="tags">'+c.tags.map(x=>'<i>'+tr(x)+'</i>').join('')+'</div>';
+    const go=()=>startCase(i); li.addEventListener('click',go); li.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}}); ol.appendChild(li); }); }
+
+  const TRAVEL=300, DWELL=340;
+  const ease=p=>1-Math.pow(1-p,2);
+  let arrived=-1, travelP=0, mode='dwell', dwell=0, playing=false, last=0, raf=0;
+  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const setCls=(el,add)=>{el.setAttribute('class',el.getAttribute('class').replace(/ ?(cov)/,'')+(add?' '+add:''))};
+
+  function paint(){
+    const cur=arrived>=0?steps[arrived].c:-1;
+    const order=['r1','r2','r3','r4'];
+    const appN=new Set(), appE=new Set(), reN=new Set(), reE=new Set(); let lvlApp=-1, lvlRe=-1;
+    if(cur>=0){
+      [...S.prefix,...CASES[cur].seg].forEach(s=>{ appN.add(s.n); if(s.e)appE.add(s.e); if(REPORT[s.n]) lvlApp=Math.max(lvlApp,order.indexOf(REPORT[s.n])); });
+      if(cur>0) S.prefix.forEach(s=>{ reN.add(s.n); if(s.e)reE.add(s.e); if(REPORT[s.n]) lvlRe=Math.max(lvlRe,order.indexOf(REPORT[s.n])); });
+      steps.forEach((s,i)=>{ if(i>arrived||s.c!==cur) return; reN.add(s.n); if(s.e)reE.add(s.e); if(REPORT[s.n]) lvlRe=Math.max(lvlRe,order.indexOf(REPORT[s.n])); });
+    }
+    for(const id in nodeEl){ const g=nodeEl[id]; g.classList.remove('visited','active','app','na');
+      if(cur<0) continue;
+      const ri=(id.length===2&&id[0]==='r')?order.indexOf(id):-1;
+      const isApp=ri>=0?ri<=lvlApp:appN.has(id);
+      if(!isApp){ g.classList.add('na'); continue; }
+      const isRe=ri>=0?ri<=lvlRe:reN.has(id);
+      g.classList.add(isRe?'visited':'app'); }
+    if(arrived>=0) nodeEl[steps[arrived].n].classList.add('active');
+    if(arrived>=0 && REPORT[steps[arrived].n]) nodeEl[REPORT[steps[arrived].n]].classList.add('active');
+    for(const id in edgeEl){ const o=edgeEl[id]; o.tr.setAttribute('visibility','hidden'); o.tr.style.strokeDashoffset=o.len; o.idle.style.opacity=1; o.base.style.opacity=1; if(o.lg){o.lg.classList.remove('on','na')}
+      let ci=-1; for(let k=0;k<4;k++) if(CHAIN_EDGE[order[k]]===id) ci=k;
+      const isApp=cur<0?true:(ci>=0?ci<=lvlApp:appE.has(id));
+      const isRe=ci>=0?ci<=lvlRe:reE.has(id);
+      if(cur>=0&&!isApp){ o.base.style.opacity=.3; o.idle.style.opacity=0; if(o.lg)o.lg.classList.add('na'); continue; }
+      if(isRe){ o.tr.setAttribute('visibility','visible'); o.tr.style.strokeDashoffset=0; o.idle.style.opacity=0;
+        o.tr.setAttribute('class','trace'+(o.chain?' static':'')); o.tr.setAttribute('marker-end','url(#art)'); if(o.lg)o.lg.classList.add('on'); }
+    }
+    // travelling edge
+    const tk=document.getElementById('token');
+    if(mode==='travel' && playing && arrived+1<steps.length && steps[arrived+1].e && !reduce){
+      const o=edgeEl[steps[arrived+1].e]; const p=ease(travelP);
+      o.tr.setAttribute('visibility','visible'); o.tr.setAttribute('class','trace'+(o.chain?' static':'')); o.tr.setAttribute('marker-end','url(#art)'); o.tr.style.strokeDashoffset=o.len*(1-p); o.idle.style.opacity=.2;
+      const pt=o.base.getPointAtLength(o.len*p); tk.setAttribute('cx',pt.x); tk.setAttribute('cy',pt.y); tk.classList.add('show');
+    } else tk.classList.remove('show');
+    // info
+    const st=steps[arrived];
+    if(st && caseEnd()) seen.add(st.c);
+    document.getElementById('stepNo').innerHTML=st?(String(arrived+1).padStart(2,'0')+'<small>/ '+String(steps.length)+'</small>'):'—<small>STEP</small>';
+    const dd=st?descOf(st):[tr('시작 전'),tr('재생 버튼을 누르거나, 다이어그램의 단계를 직접 눌러 보세요.')];
+    document.getElementById('stepTitle').textContent=dd[0];
+    document.getElementById('stepDesc').textContent=dd[1];
+    document.getElementById('stepCase').textContent=st?caseLabel(st.c):tr('모든 경우의 수를 차례로 보여 드립니다');
+    document.getElementById('cNow').textContent=st?(st.c+1):'—';
+    [...ol.children].forEach((li,i)=>{ const c=CASES[i]; li.className='case'+(seen.has(i)?' done':'')+(i===cur?' cur':'');
+      if(i===cur){ const pr=(arrived-c.first+(mode==='travel'?ease(travelP):0))/Math.max(1,(c.last-c.first)); li.style.setProperty('--p',Math.min(1,Math.max(0,pr))); }
+      else li.style.removeProperty('--p'); });
+    const done=caseEnd()&&!playing;
+    document.getElementById('bPlayIc').textContent=playing?'❚❚':(done?'↻':'▶');
+    document.getElementById('bPlayTx').textContent=tr(playing?'일시정지':(done?'다시 재생':(arrived>=0?'이어서 재생':'재생')));
+  }
+  function caseEnd(){ return arrived>=0 && arrived===CASES[steps[arrived].c].last; }
+  function tick(ts){
+    if(!playing) return;
+    const dt=Math.min(50,ts-last); last=ts;
+    if(mode==='travel'){ travelP+=dt/TRAVEL; if(travelP>=1){ arrived++; travelP=0; mode='dwell'; dwell=0; } }
+    else { dwell+=dt;
+      if(dwell>=DWELL){
+        if(arrived+1>=steps.length||steps[arrived+1].c!==steps[arrived].c){ playing=false; paint(); return }
+        const nx=steps[arrived+1]; if(nx.e && !reduce){ mode='travel'; travelP=0 } else { arrived++; dwell=0 } } }
+    paint(); raf=requestAnimationFrame(tick);
+  }
+  function runFrom(i){ arrived=i; mode='dwell'; dwell=0; travelP=0; playing=true; last=performance.now(); cancelAnimationFrame(raf); raf=requestAnimationFrame(tick); paint(); }
+  function play(){ if(caseEnd()) runFrom(CASES[steps[arrived].c].first); else runFrom(Math.max(0,arrived)); }
+  function pause(){ playing=false; cancelAnimationFrame(raf); paint(); }
+  function reset(){ playing=false; cancelAnimationFrame(raf); arrived=-1; travelP=0; mode='dwell'; dwell=0; paint(); }
+  function stepTo(i){ playing=false; cancelAnimationFrame(raf); arrived=Math.max(0,Math.min(steps.length-1,i)); travelP=0; mode='dwell'; paint(); }
+  function next(){ stepTo(arrived+1); }
+  function prev(){ stepTo(arrived-1); }
+  function jump(i){ stepTo(i); }
+  function startCase(i){ runFrom(CASES[i].first); }
+  function nextCase(){ const cur=arrived>=0?steps[arrived].c:-1; startCase((cur+1)%CASES.length); }
+  document.getElementById('bPlay').onclick=()=>playing?pause():play();
+  document.getElementById('bNext').onclick=next;
+  document.getElementById('bPrev').onclick=prev;
+  document.getElementById('bNextCase').onclick=nextCase;
+  document.getElementById('bReset').onclick=reset;
+  for(const id in nodeEl){ const g=nodeEl[id];
+    const act=()=>{ const cc=arrived>=0?steps[arrived].c:0; let i=steps.findIndex(s=>s.c===cc&&(s.n===id||REPORT[s.n]===id)); if(i<0) i=steps.findIndex(s=>s.n===id||REPORT[s.n]===id); if(i>=0) jump(i); };
+    g.addEventListener('click',act); g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();act()}}); }
+  /* mobile camera: follow the active step */
+  const stageEl=document.getElementById('stage'), mq=matchMedia('(max-width:767px)'), vb=document.getElementById('bView');
+  let full=false; const VW=400; let cam={x:0,y:0,w:1080,h:800}, camRaf=0;
+  function target(){
+    const aspect=Math.max(1.0,(stageEl.clientHeight||440)/(stageEl.clientWidth||360)); const w=VW,h=Math.min(800,Math.round(VW*1.25));
+    if(caseEnd()&&!playing) return {x:0,y:0,w:1080,h:800};
+    let cx=540,cy=300;
+    const tk=document.getElementById('token');
+    if(tk.classList.contains('show')){ cx=+tk.getAttribute('cx'); cy=+tk.getAttribute('cy'); }
+    else if(arrived>=0){ const n=N[steps[arrived].n]; cx=n[0]+n[2]/2; cy=n[1]+n[3]/2; }
+    return {x:Math.max(0,Math.min(1080-w,cx-w/2)),y:Math.max(0,Math.min(800-h,cy-h/2)),w,h};
+  }
+  function camLoop(){
+    camRaf=requestAnimationFrame(camLoop);
+    if(!mq.matches||full){ if(svg.getAttribute('viewBox')!=='0 0 1080 800') svg.setAttribute('viewBox','0 0 1080 800'); stageEl.classList.toggle('full',mq.matches&&full); return; }
+    stageEl.classList.remove('full');
+    const t=target(), k=.14; cam.x+=(t.x-cam.x)*k; cam.y+=(t.y-cam.y)*k; cam.w+=(t.w-cam.w)*k; cam.h+=(t.h-cam.h)*k;
+    svg.setAttribute('viewBox',cam.x.toFixed(1)+' '+cam.y.toFixed(1)+' '+cam.w.toFixed(1)+' '+cam.h.toFixed(1));
+  }
+  vb.onclick=()=>{ full=!full; vb.textContent=tr(full?'확대 보기':'전체 보기'); };
+  function relayout(){ buildTracker(); layoutNotes(); fitText(); vb.textContent=tr(full?'확대 보기':'전체 보기'); paint(); }
+  window.__hooks.push(relayout);
+  camLoop(); relayout();
+  addEventListener('pagechange',e=>{
+    if(e.detail.id==='flow-sec'){ relayout(); if(!reduce){ reset(); setTimeout(()=>{ if(!playing&&arrived<0) play() },450) } }
+    else if(playing) pause();
+  });
+})();
+
+/* ================= OPS standards ================= */
+(function(){
+  const P=[
+   {k:'man',t:'사람',e:'Man',grp:'A',desc:'작업자·인원 관련 이상 발생 시',
+    items:[['비인증자 투입','팀장'],['이상 발생 처리범위가 전/후 공정에 영향을 미칠 때','팀장']],
+    std:[['* 자격인증',['1. 중요기본작업(납땜,압착,나사체결)','2. 입고/공정/출하 검사원','3. 제품별 생산 투입 자격 인증']]]},
+   {k:'mat',t:'재료',e:'Material',grp:'A',desc:'투입 자재·임가공품 관련 이상 발생 시',
+    items:[['투입 자재 부족으로 라인 가동 불능일 때','작업長'],['계획된 생산 완료 후 해당 투입 자재가 남을 때','팀장'],['미승인 투입 자재를 발견했을 때','작업長'],
+      ['투입 자재 또는 임가공품이 규격에서 벗어난 경우','작업長'],['검사 대상 품목이 미검사로 공정에 투입 시','팀장'],['공정 투입 자재 유실율이 10% 이상 발생 시','공장장'],
+      ['특성 및 외관상 치명 불량이 연속적 1개 이상 발견','팀장'],['원자재 및 임가공품의 동일 불량이 연속 또는 일정 간격으로 발생 시. (동일 불량 3회 연속)','공장장'],['무검사 자재의 전수 불량일 경우','공장장']],
+    std:[['* 자재 (OS&D)',['1. 정량/정품','2. 사양/규격']],['* 검사',['3. 수입검사 기준','4. 한도견본']]]},
+   {k:'met',t:'방법',e:'Method',grp:'A',desc:'작업·검사 방법 관련 이상 발생 시',
+    items:[['작업/검사 표준대로 작업이 시행되지 못할 시','작업長'],['작업/검사자가 표준 미준수로 제품 및 부품 품질에 영향을 미칠 경우','작업長'],['관리항목 누락 및 미체크 사항 발견 시','팀장'],
+      ['4M 변경 사항에 대하여 미적용 상태로 일정 생산 및 검사 진행이 발견 되었을 시.','공장장']],
+    std:[['* 표준',['1. 작업 공정 표준','2. 검사 공정 표준','3. 중요 기본 작업 지침(납땜,압착,나사 체결)','4. 식별 및 이력관리 기준']]]},
+   {k:'mac',t:'설비',e:'Machine',grp:'A',desc:'설비·계측기 관련 이상 발생 시',
+    items:[['설비 Trouble 다발로 공정에 과다 재공 발생 시','공장장'],['해당 설비/계측기가 파손되었을 때.','팀장'],['해당 설비 계측기가 Setting 불가 시','팀장'],['해당 설비/계측기의 점검(검정)주기가 지났을 시','팀장']],
+    std:[['* 관리 기준',['1. 설비 규격','2. 설비 점검/관리 기준','3. 계측기 점검 관리 기준']]]},
+   {k:'env',t:'환경',e:'Environment',grp:'A',desc:'작업 환경 관련 이상 발생 시',
+    items:[['정전기 방지 대책없이 라인 가동 발견 시','팀장'],['토크 관리 미준수 상태에 라인 가동 발견 시','팀장'],['작업 환경의 5S 상태가 품질에 악영향을 미칠 것으로 판단될 때.','팀장']],
+    std:[['* 작업 환경',['1. 정전기 관리 지침','2. 토크 관리 지침','3. 3정 5S']]]},
+   {k:'qc',t:'품질(결과)특성',e:'OQC · VOC',grp:'B',desc:'제품 결과 특성 · 고객 관점 이상 발생 시',
+    items:[['제품의 기본 Spec에서 벗어났을 경우','품질부'],['출하 검사 시 과거 불량이 1회 이상 발생 시','품질부'],['치명 불량 요건 발견 및 불량 발생 시','품질부'],
+      ['제품 기본 Spec이외의 별도 고객 요구 조건에 대한 미적용 시.','품질부'],['기 출하품에 대한 고객 불만 발생 시 내부 재고 및 재공 확인이 불가피할 경우','품질부']],
+    std:[['* 제품 규격/표준/고객 만족',['1. 출하 검사 기준/규격','2. 제품 Spec/규격','3. 고객/제품/법적 요구 조건','4. 식별 및 이력 관리 기준','5. VOC 발생 대책 보고서']]]}
+  ];
+  const cls={'작업長':'s-lead','팀장':'s-team','공장장':'s-plant','품질부':'s-qa'};
+  const rowA=document.getElementById('rowA'), rowB=document.getElementById('rowB');
+  const lab=(b,p)=>{ b.innerHTML='<span class="n">'+tr('{n}건',{n:p.items.length})+'</span><span class="k">'+tr(p.t)+'</span><span class="e">'+p.e+'</span>'; };
+  P.forEach((p,i)=>{
+    const b=document.createElement('button'); b.className='ops'; b.id='tab-'+p.k; b.setAttribute('role','tab'); b.setAttribute('aria-controls','pitems');
+    lab(b,p);
+    b.onclick=()=>show(i,true); b.onkeydown=e=>{ if(e.key==='ArrowRight'||e.key==='ArrowLeft'){ e.preventDefault(); show((i+(e.key==='ArrowRight'?1:P.length-1))%P.length,true); document.getElementById('tab-'+P[cur].k).focus(); } };
+    (p.grp==='A'?rowA:rowB).appendChild(b);
+  });
+  let cur=-1;
+  const hi=q=>q.replace(/(\d+% 이상|3회 연속|1회 이상|1개 이상)/g,'<em>$1</em>');
+  const hx=q=>getLang()==='ko'?hi(q):tr(q);
+  function show(i,user){
+    const back=i<cur; cur=i; const p=P[i];
+    P.forEach((q,j)=>{const b=document.getElementById('tab-'+q.k); b.setAttribute('aria-selected',j===i); b.tabIndex=j===i?0:-1});
+    const used=new Set(p.items.map(x=>x[1]));
+    document.getElementById('phead').innerHTML='<div class="phead pane'+(back?' back':'')+'"><div><small>'+(p.grp==='A'?tr('4M 1E 관리항목(원인) 이상 · {e}',{e:p.e}):tr('품질(결과)특성 이상 · {e}',{e:p.e}))+'</small><h3>'+tr('{t} 이상 시 Line Stop 기준',{t:tr(p.t)})+'</h3><p>'+tr(p.desc)+'</p></div>'+
+      '<div class="pager"><button class="arr" aria-label="'+tr('이전 구분')+'" id="pv">‹</button><span class="pg">'+(i+1)+' / '+P.length+'</span><button class="arr" aria-label="'+tr('다음 구분')+'" id="nx">›</button></div></div>';
+    document.getElementById('pitems').innerHTML='<div class="items pane'+(back?' back':'')+'"><div class="th"><span>No</span><span>'+tr('이상 발생 항목')+'</span><span style="text-align:right">'+tr('Stop 주체')+'</span></div><ul>'+
+      p.items.map((x,n)=>'<li><span class="no">'+(n+1)+'</span><span class="tx">'+hx(x[0])+'</span><span class="stop '+cls[x[1]]+'">'+tr(x[1])+'</span></li>').join('')+'</ul></div>';
+    document.getElementById('pstd').innerHTML='<div class="std pane'+(back?' back':'')+'"><small>'+tr('관련 기준 / 규격')+'</small><h4>'+tr(p.t)+'</h4>'+
+      p.std.map(q=>'<dl><dt>'+tr(q[0])+'</dt>'+q[1].map(l=>'<dd>'+tr(l)+'</dd>').join('')+'</dl>').join('')+
+      '<div class="esc"><small>'+tr('Stop 주체 (이 구분에서 사용)')+'</small><div class="chain">'+
+      ['작업長','팀장','공장장','품질부'].map((q,k)=>(k&&k<3?'<i>›</i>':(k===3?'<i>·</i>':''))+'<span class="stop '+cls[q]+(used.has(q)?' use':'')+'">'+tr(q)+'</span>').join('')+'</div></div></div>';
+    document.getElementById('pv').onclick=()=>show((cur+P.length-1)%P.length,true);
+    document.getElementById('nx').onclick=()=>show((cur+1)%P.length,true);
+    if(user) history.replaceState(null,'','#ops-'+p.k);
+  }
+  const h=location.hash.match(/#ops-(\w+)/); const start=h?Math.max(0,P.findIndex(p=>p.k===h[1])):0;
+  show(start,false);
+  window.__hooks.push(()=>{ P.forEach(p=>lab(document.getElementById('tab-'+p.k),p)); if(cur>=0) show(cur,false); });
+})();
+
+/* ================= init language ================= */
+(function(){ let l='ko'; try{ l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('lsLang')||'ko' }catch(e){} setLang(l); })();
+</script>
+</body>
+</html>
