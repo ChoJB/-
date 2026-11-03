@@ -318,6 +318,18 @@ nav.gnb a[aria-current=page]{font-weight:700}
   .visual{height:430px;padding:128px 16px 0}
   .legend{justify-content:flex-start}
 }
+
+/* ---- v5 compact cases ---- */
+.case{padding:8px 10px;display:flex;align-items:center;gap:8px;line-height:1.2;min-height:0}
+.case b{flex:none;font-size:12px;color:var(--text);min-width:auto}
+.case.done b::after{content:' ✓'}
+.case .tags{margin-top:0;gap:3px;flex-wrap:wrap}
+.case .tags i{font-size:10.5px;height:18px;padding:0 7px;border-radius:9px}
+.case .tags i.tg-stop{background:#FBE9E9;color:#B00000}
+.case .tags i.tg-rej{background:#FFF1DC;color:#9A5B00}
+.case .tags i.tg-lot{background:#E6EEF8;color:#002C5F}
+.case.cur{background:#EAF4F8}
+@media (max-width:767px){.case{flex-direction:column;align-items:flex-start;gap:5px;padding:8px}}
 </style>
 </head>
 <body>
@@ -875,8 +887,7 @@ document.querySelectorAll('.lgb').forEach(b=>b.addEventListener('click',()=>setL
   }
   let steps=[];
   CASES.forEach((c,ci)=>{
-    if(ci===0){ S.prefix.forEach(s=>steps.push({...s,c:ci})); }
-    else steps.push({n:'lead',c:ci,jump:true,dk:['경우 {n} 시작 — 작업長 검토','같은 이상 건이 다른 경우로 처리될 때의 흐름입니다. ({tags})']});
+    S.prefix.forEach(s=>steps.push({...s,c:ci}));
     c.seg.forEach(s=>steps.push({...s,c:ci}));
     c.first=steps.findIndex(s=>s.c===ci); c.last=steps.length-1;
   });
@@ -885,7 +896,7 @@ document.querySelectorAll('.lgb').forEach(b=>b.addEventListener('click',()=>setL
   function descOf(st){ if(st.dk) return [tr(st.dk[0],{n:st.c+1}),tr(st.dk[1],{tags:tagsStr(st.c)})]; const d=st.d||DESC[st.n]; return [tr(d[0]),tr(d[1])]; }
   function caseLabel(ci){ return tr('경우 {n} / {t}',{n:ci+1,t:CASES.length})+' · '+tagsStr(ci); }
   function buildTracker(){ ol.innerHTML=''; CASES.forEach((c,i)=>{ const li=document.createElement('li'); li.className='case'; li.tabIndex=0; li.setAttribute('role','button');
-    li.innerHTML='<b>'+tr('경우 {n}',{n:i+1})+'</b><div class="tags">'+c.tags.map(x=>'<i>'+tr(x)+'</i>').join('')+'</div>';
+    li.innerHTML='<b>'+tr('경우 {n}',{n:i+1})+'</b><div class="tags">'+c.tags.map(x=>'<i class="'+(x==='Line Stop'?'tg-stop':(x==='공장장 반려 후 재처리'?'tg-rej':(x==='Lot성'?'tg-lot':''))) +'">'+tr(x)+'</i>').join('')+'</div>';
     const go=()=>startCase(i); li.addEventListener('click',go); li.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}}); ol.appendChild(li); }); }
 
   const TRAVEL=300, DWELL=340;
